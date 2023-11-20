@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user_wo;
+use App\Models\userwo;
 use Illuminate\Http\Request;
 
 class UserWoController extends Controller
@@ -41,10 +41,10 @@ class UserWoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\user_wo  $user_wo
+     * @param  \App\Models\userwo  $user_wo
      * @return \Illuminate\Http\Response
      */
-    public function show(user_wo $user_wo)
+    public function show(userwo $user_wo)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserWoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\user_wo  $user_wo
+     * @param  \App\Models\userwo  $user_wo
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_wo $user_wo)
+    public function edit(userwo $user_wo)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserWoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\user_wo  $user_wo
+     * @param  \App\Models\userwo  $user_wo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_wo $user_wo)
+    public function update(Request $request, userwo $user_wo)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserWoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\user_wo  $user_wo
+     * @param  \App\Models\userwo  $user_wo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_wo $user_wo)
+    public function destroy(userwo $user_wo)
     {
         //
     }
