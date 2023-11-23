@@ -18,6 +18,18 @@ class WorkOrderFactory extends Factory
     {
         return [
             //
+            'nama_pic' => fake()->name(),
+            'slug' => fake()->name(),
+            'nomor_komplain' => fake()->randomNumber(5, false),
+            'prioritas' => null,
+            'jenis_servis' => null,
+            'waktu_pengajuan' => now(),
+            'waktu_ambil' => null,
+            'waktu_selesai' => null,
+            'waktu_estimasi' => null,
+            'masalah' => fake()->paragraph(),
+            'solusi' => null,
+            'status' => 'Sedang dikerjakan'
         ];
     }
 }

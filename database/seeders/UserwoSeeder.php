@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\userwo;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserwoSeeder extends Seeder
 {
@@ -15,5 +19,11 @@ class UserwoSeeder extends Seeder
     public function run()
     {
         //
+        userwo::truncate();
+        userwo::create([
+            'nama' => "Andrew",
+            'username' => 'andrew',
+            'password' => bcrypt('password'),
+        ]);
     }
 }

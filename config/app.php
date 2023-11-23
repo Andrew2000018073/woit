@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Facade;
 
+Laravel\Passport\PassportServiceProvider::class;
+
+
 return [
 
     /*
@@ -108,7 +111,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => env('FAKER_LOCALE', 'id_ID'),
 
     /*
     |--------------------------------------------------------------------------

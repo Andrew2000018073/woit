@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\userwo;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class UserWoController extends Controller
 {
@@ -15,6 +16,8 @@ class UserWoController extends Controller
     public function index()
     {
         //
+        $data = userwo::limit(1)->get();
+        return view('main.dashboard', compact('data'));
     }
 
     /**

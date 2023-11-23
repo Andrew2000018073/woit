@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->char('nama_kategori', 25);
             $table->string('keterangan');
+            $table->string('slug');
         });
     }
 

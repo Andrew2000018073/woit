@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Respond;
+use App\Http\Controllers\UserWoController;
+use App\Http\Controllers\WorkorderController;
+use App\Models\userwo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,31 +20,34 @@ use Illuminate\Support\Facades\Route;
 
 
 // Admin
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('index');
+Route::post('/contoh', [LoginController::class, 'contoh'])->name('contoh');
 
 Route::get('/dashboard', function () {
     return view('main.dashboard', ['type_menu' => 'detail']);
 });
+
+// Route::resource('/dashboard', UserWoController::class,  ['type_menu' => 'components']);
+// Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
 Route::get('/admintambahtugas', function () {
     return view('main.form.adminnambah', ['type_menu' => 'components']);
 });
 Route::get('/adminugas', function () {
     return view('main.table.proses', ['type_menu' => 'components']);
 });
-Route::get('/respond-permintaan', function () {
-    return view('main.table.respon', ['type_menu' => 'response']);
-});
+
+Route::get('/respond-permintaan', [Respond::class, 'index']);
+// Route::get('/respond-permintaan', function () {
+//     return view('main.table.respon', ['type_menu' => 'response']);
+// });
 Route::get('/form-detail', function () {
     return view('main.form.detail', ['type_menu' => 'detail']);
 });
 
 
 // User
-Route::get('/user/permintaan', function () {
-    return view('user.request', ['type_menu' => 'user']);
-});
+Route::resource('/user/permintaan', WorkorderController::class, ['type_menu' => 'user']);
 Route::get('/user/cek-proses', function () {
     return view('user.progress', ['type_menu' => 'user']);
 });

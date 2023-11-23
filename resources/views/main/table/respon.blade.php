@@ -13,6 +13,7 @@
             <h1>Permintaan Servis</h1>
         </div>
 
+
         <div class="section-body">
             <div class="row">
                 <div class="col-12">
@@ -20,31 +21,32 @@
                         <div class="card-header">
                             <h4>Tabel permintaan servis yang belum diambil</h4>
                         </div>
+
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table-striped table-md table">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nomor Komplain</th>
-                                        <th>Masalah</th>
-                                        <th>Tanggal Pengajuan</th>
-                                        <th>Aksi</th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>UIT/CMPLT/SFT/1023/0394</td>
-                                        <td> Permisi para master / suhu, kalo layar masuk bios sendiri tidak bisa keluar bios kenapa ya, hanya laptop murah advan soutmate punya adik, untuk blajar di sekolah, ga mampu bli. In yg bagus, faktor ekonomi, hanya ingin dan berharap adik saya bisa belajar.</td>
-                                        <td>20/8/2023</td>
-                                        <td><a href="/form-detail" class="btn btn-primary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>UIT/CMPLT/SFT/1023/0394</td>
-                                        <td> Kronologinya, saat nyalain tiba tiba di area 24pin power terbakar(merah ke orenan) dan juga berasap saya buru buru copot kabel power, itu karena apa ya bang kira kira masih bisa dipakai mobonya atau sudah wasallam?😿</td>
-                                        <td>11/15/2023</td>
-                                        <td><a href="/form-detail" class="btn btn-primary">Detail</a></td>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nomor Komplain</th>
+                                            <th>Masalah</th>
+                                            <th>Tanggal Pengajuan</th>
+                                            <th>Aksi</th>
+                                            <th></th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        @foreach($data as $respon)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $respon->nomor_komplain }}</td>
+                                            <td>{{ $respon->masalah }}</td>
+                                            <td>{{ $respon->waktu_pengajuan }}</td>
+                                            <td><a href="/form-detail" class="btn btn-primary">Detail</a></td>
+                                        </tr>
+                                    </tbody>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>

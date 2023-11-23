@@ -16,6 +16,8 @@ class WorkorderController extends Controller
     public function index()
     {
         //
+        // $data = userwo::limit(1)->get();
+        return view('user.request');
     }
 
     /**

@@ -29,13 +29,12 @@
                         </div>
                         <h4 class="text-dark font-weight-normal">Selamat datang <span class="font-weight-bold">IT Support</span>
                         </h4>
-                        <form method="get" action="dashboard" class="needs-validation" novalidate="">
+                        <form method="post" action="/contoh">
+                            @csrf
                             <div class="form-group">
-                                <label for="text">Username</label>
-                                <input id="text" type="text" class="form-control" name="text" tabindex="1" required autofocus>
-                                <div class="invalid-feedback">
-                                    Tolong masukan email anda
-                                </div>
+                                <label for="text">username</label>
+                                <input id="username" type="text" class="form-control " name="username" tabindex="1" required autofocus>
+
                             </div>
 
                             <div class="form-group">
@@ -44,7 +43,7 @@
                                 </div>
                                 <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                                 <div class="invalid-feedback">
-                                    tolong masukan password anda </div>
+                                    Tolong masukan password anda </div>
                             </div>
 
 
