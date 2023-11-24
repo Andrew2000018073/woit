@@ -14,8 +14,8 @@
             <li class="{{ Request::is('respond-permintaan') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('respond-permintaan') }}"><i class="fas fa-person" style="color: black;"></i> <span>Respon Permintaan </span></a>
             </li>
-            <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('blank-page') }}"><i class="fas fa-database"></i> <span>Lihat Data Lengkap</span></a>
+            <li class="{{ Request::is('daftar-wo') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('daftar-wo') }}"><i class="fas fa-database"></i> <span>Lihat Data Lengkap</span></a>
             </li>
             <li class="{{ Request::is('adminugas') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('adminugas') }}"><i class="fas fa-screwdriver-wrench"></i> <span>Servis Berlangsung

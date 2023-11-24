@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('workorders', function (Blueprint $table) {
             $table->id('id_workorder')->autoIncrement();
 
-            $table->string('id_kategori')->nullable()->unique();
-            $table->string('id_user')->nullable()->unique();
+            // $table->string('id_kategori')->nullable()->unique();
+            // $table->string('id_user')->nullable()->unique();
+            $table->foreignId('kategoriwo_id');
+            $table->foreignId('user_id');
 
             $table->timestamps();
             $table->string('nama_pic');
@@ -30,7 +32,7 @@ return new class extends Migration
             $table->dateTime('waktu_selesai', $precision = 0)->nullable();
             $table->time('waktu_estimasi', $precision = 0)->nullable();
             $table->text('masalah');
-            $table->string('solusi')->nullable();
+            $table->text('solusi')->nullable();
             $table->enum('status', ['Belum dikerjakan', 'Sedang dikerjakan', 'Selesai'])->nullable();
         });
     }

@@ -25,16 +25,15 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="m-3 p-4">
                         <div class="d-flex justify-content-center">
-                            <img src="{{ asset('img/MAK.jpg ') }}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2 ">
+                            <img src="{{ asset('img/MAK.jpg ') }}" alt="logo" width="200" class="shadow-light rounded-circle mb-5 mt-2 ">
                         </div>
-                        <h4 class="text-dark font-weight-normal">Selamat datang <span class="font-weight-bold">IT Support</span>
+                        <h4 class="text-dark font-weight-normal mb-5">Selamat datang <span class="font-weight-bold">IT Support</span>
                         </h4>
-                        <form method="post" action="/contoh">
+                        <form method="post" action="/contoh" class="mt-4">
                             @csrf
                             <div class="form-group">
-                                <label for="text">username</label>
-                                <input id="username" type="text" class="form-control " name="username" tabindex="1" required autofocus>
-
+                                <label for="text">Username</label>
+                                <input id="username" type="text" class="form-control @error('username')is-invalid @enderror" name="username" tabindex="1" required autofocus>
                             </div>
 
                             <div class="form-group">

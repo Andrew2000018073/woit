@@ -128,9 +128,6 @@
 <!-- JS Libraies -->
 <script src="{{ asset('library/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
 <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
-<script src="{{ asset('library/jqvmap/dist/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('library/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
-<script src="{{ asset('library/jqvmap/dist/maps/jquery.vmap.indonesia.js') }}"></script>
 <script src="https://cdnjs.com/libraries/Chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

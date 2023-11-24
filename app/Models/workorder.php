@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class workorder extends Model
 {
     use HasFactory;
-
+    protected $guarded = ['id'];
     public function userwo()
     {
         return $this->belongsTo(userwo::class);

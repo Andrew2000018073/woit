@@ -20,16 +20,17 @@ class WorkorderSeeder extends Seeder
         workorder::create([
 
             'nama_pic' => fake()->name(),
+
             'slug' => fake()->name(),
-            'nomor_komplain' => fake()->randomNumber(5, false),
-            'prioritas' => null,
-            'jenis_servis' => null,
+            'nomor_komplain' => fake()->numberBetween(1, 4),
+            'prioritas' => 'menengah',
+            'jenis_servis' => 'internal',
             'waktu_pengajuan' => now(),
-            'waktu_ambil' => null,
-            'waktu_selesai' => null,
-            'waktu_estimasi' => null,
+            'waktu_ambil' => now(),
+            'waktu_selesai' => now(),
+            'waktu_estimasi' => now(),
             'masalah' => fake()->paragraph(),
-            'solusi' => null,
+            'solusi' => fake()->paragraph(),
             'status' => 'Belum Dikerjakan',
         ]);
     }

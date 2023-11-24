@@ -19,17 +19,19 @@ class WorkOrderFactory extends Factory
         return [
             //
             'nama_pic' => fake()->name(),
+            'kategoriwo_id' => fake()->randomDigitNot(0, 5, 6, 7, 8, 9),
+            'user_id' => '1',
             'slug' => fake()->name(),
             'nomor_komplain' => fake()->randomNumber(5, false),
-            'prioritas' => null,
-            'jenis_servis' => null,
+            'prioritas' => 'menengah',
+            'jenis_servis' => 'internal',
             'waktu_pengajuan' => now(),
-            'waktu_ambil' => null,
-            'waktu_selesai' => null,
-            'waktu_estimasi' => null,
+            'waktu_ambil' => now(),
+            'waktu_selesai' => now(),
+            'waktu_estimasi' => now(),
             'masalah' => fake()->paragraph(),
-            'solusi' => null,
-            'status' => 'Sedang dikerjakan'
+            'solusi' => fake()->paragraph(),
+            'status' => 'Belum Dikerjakan',
         ];
     }
 }

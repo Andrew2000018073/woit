@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DaftarWo;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Respond;
 use App\Http\Controllers\UserWoController;
@@ -38,6 +39,7 @@ Route::get('/adminugas', function () {
 });
 
 Route::get('/respond-permintaan', [Respond::class, 'index']);
+Route::get('/daftar-wo', [DaftarWo::class, 'index']);
 // Route::get('/respond-permintaan', function () {
 //     return view('main.table.respon', ['type_menu' => 'response']);
 // });
