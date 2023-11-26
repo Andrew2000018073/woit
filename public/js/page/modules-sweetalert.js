@@ -13,7 +13,7 @@ $("#swal-3").click(function() {
 });
 
 $("#swal-4").click(function() {
-	swal('Good Job', 'Pesanan Anda Belum diambil', 'info');
+	swal('Pesanan anda sedang dalam proses pengerjaan');
 });
 
 $("#swal-5").click(function() {
@@ -51,7 +51,7 @@ $("#swal-7").click(function() {
     },
     },
   }).then((data) => {
-    swal('Hello, ' + data + '!');
+    swal('Terimakasih atas feedback anda!');
   });
 });
 
