@@ -20,7 +20,7 @@ class WorkOrderFactory extends Factory
             //
             'nama_pic' => fake()->name(),
             'kategoriwo_id' => fake()->randomDigitNot(0, 5, 6, 7, 8, 9),
-            'user_id' => '1',
+            'userwo_id' => '1',
             'slug' => fake()->name(),
             'nomor_komplain' => fake()->randomNumber(5, false),
             'prioritas' => 'menengah',

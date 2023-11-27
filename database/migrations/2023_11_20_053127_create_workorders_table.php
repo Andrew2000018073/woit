@@ -19,7 +19,7 @@ return new class extends Migration
             // $table->string('id_kategori')->nullable()->unique();
             // $table->string('id_user')->nullable()->unique();
             $table->foreignId('kategoriwo_id');
-            $table->foreignId('user_id');
+            $table->foreignId('userwo_id');
 
             $table->timestamps();
             $table->string('nama_pic');

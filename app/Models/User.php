@@ -17,8 +17,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    protected $table = 'userwos';
-    protected $primaryKey = 'id_user';
+     protected $table = 'userwos';
+     protected $primaryKey = 'user_id';
 
     protected $fillable = [
         'name',
@@ -41,4 +41,9 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function workorder()
+    {
+        return $this->hasMany(workorder::class);
+    }
 }

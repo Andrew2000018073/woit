@@ -72,7 +72,7 @@
                                             @foreach ($filter as $respon)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>Andrew</td>
+                                                    <td>{{ $respon->userwo->nama }}</td>
                                                     <td> {{ $respon->kategoriwo->nama_kategori }} </td>
                                                     <td>{{ $respon->nomor_komplain }}</td>
                                                     <td>{{ $respon->prioritas }} </td>
@@ -85,7 +85,8 @@
                                                     <td>{{ $respon->masalah }}</td>
                                                     <td>{{ $respon->status }}</td>
                                                     <td>{{ $respon->waktu_estimasi }}</td>
-                                                    <td><a href="/form-detail" class="btn btn-primary">Detail</a></td>
+                                                    <td><a href="/form-detail-lengkap" class="btn btn-primary">Detail</a>
+                                                    </td>
 
                                                 </tr>
                                         </tbody>

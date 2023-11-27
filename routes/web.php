@@ -43,6 +43,9 @@ Route::get('/daftar-wo', [DaftarWo::class, 'index']);
 // Route::get('/respond-permintaan', function () {
 //     return view('main.table.respon', ['type_menu' => 'response']);
 // });
+Route::get('/a', function () {
+    return view('main.form.detail', ['type_menu' => 'detail']);
+});
 Route::get('/form-detail', function () {
     return view('main.form.detail', ['type_menu' => 'detail']);
 });
@@ -221,9 +224,9 @@ Route::get('/user/rating', function () {
 // Route::get('/modules-sparkline', function () {
 //     return view('pages.modules-sparkline', ['type_menu' => 'modules']);
 // });
-Route::get('/modules-sweet-alert', function () {
-    return view('pages.modules-sweet-alert', ['type_menu' => 'modules']);
-});
+// Route::get('/modules-sweet-alert', function () {
+//     return view('pages.modules-sweet-alert', ['type_menu' => 'modules']);
+// });
 // Route::get('/modules-toastr', function () {
 //     return view('pages.modules-toastr', ['type_menu' => 'modules']);
 // });
