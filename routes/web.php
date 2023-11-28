@@ -3,6 +3,8 @@
 use App\Http\Controllers\DaftarWo;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Respond;
+use App\Http\Controllers\UserRequest;
+use App\Http\Controllers\UserRequestController;
 use App\Http\Controllers\UserWoController;
 use App\Http\Controllers\WorkorderController;
 use App\Models\userwo;
@@ -34,6 +36,9 @@ Route::get('/dashboard', function () {
 Route::get('/admintambahtugas', function () {
     return view('main.form.adminnambah', ['type_menu' => 'components']);
 });
+
+Route::resource('/tambahtugas', WorkorderController::class);
+
 Route::get('/adminugas', function () {
     return view('main.table.proses', ['type_menu' => 'components']);
 });
@@ -43,8 +48,8 @@ Route::get('/daftar-wo', [DaftarWo::class, 'index']);
 // Route::get('/respond-permintaan', function () {
 //     return view('main.table.respon', ['type_menu' => 'response']);
 // });
-Route::get('/a', function () {
-    return view('main.form.detail', ['type_menu' => 'detail']);
+Route::get('/daftar-wo/detail', function () {
+    return view('main.detail.index', ['type_menu' => 'detail']);
 });
 Route::get('/form-detail', function () {
     return view('main.form.detail', ['type_menu' => 'detail']);
@@ -52,12 +57,15 @@ Route::get('/form-detail', function () {
 
 
 // User
-Route::resource('/user/permintaan', WorkorderController::class, ['type_menu' => 'user']);
+
+Route::resource('/user/permintaan', UserRequestController::class);
+
+
 Route::get('/user/cek-proses', function () {
     return view('user.progress', ['type_menu' => 'user']);
 });
 Route::get('/user/rating', function () {
-    return view('user.rating', ['type_menu' => 'user']);
+
 });
 
 // Route::redirect('/', '/dashboard-general-dashboard');

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\workorder;
-use App\Http\Requests\StoreworkorderRequest;
-use App\Http\Requests\UpdateworkorderRequest;
+use Illuminate\Http\Request;
 
-class WorkorderController extends Controller
+class UserRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,6 @@ class WorkorderController extends Controller
     public function index()
     {
         //
-        // $data = userwo::limit(1)->get();
 
     }
 
@@ -28,26 +26,38 @@ class WorkorderController extends Controller
     public function create()
     {
         //
+        return view('user.request');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreworkorderRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreworkorderRequest $request)
+    public function store(Request $request)
     {
-        //
+        //validate form
+        $validatedData= $request->validate([
+            'nama_pic'     => 'required|min:5',
+            'keluhan'   => 'required|min:10'
+        ]);
+
+        //create post
+        $validatedData['status'] = 'Belum dikerjakan';
+        workorder::create($validatedData);
+
+        //redirect to index
+        return redirect('/user/permintaan/create')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\workorder  $workorder
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(workorder $workorder)
+    public function show($id)
     {
         //
     }
@@ -55,10 +65,10 @@ class WorkorderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\workorder  $workorder
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(workorder $workorder)
+    public function edit($id)
     {
         //
     }
@@ -66,11 +76,11 @@ class WorkorderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateworkorderRequest  $request
-     * @param  \App\Models\workorder  $workorder
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateworkorderRequest $request, workorder $workorder)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,10 +88,10 @@ class WorkorderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\workorder  $workorder
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(workorder $workorder)
+    public function destroy($id)
     {
         //
     }

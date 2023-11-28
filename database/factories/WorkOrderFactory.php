@@ -29,7 +29,7 @@ class WorkOrderFactory extends Factory
             'waktu_ambil' => now(),
             'waktu_selesai' => now(),
             'waktu_estimasi' => now(),
-            'masalah' => fake()->paragraph(),
+            'keluhan' => fake()->paragraph(),
             'solusi' => fake()->paragraph(),
             'status' => 'Belum Dikerjakan',
         ];

@@ -18,12 +18,12 @@ return new class extends Migration
 
             // $table->string('id_kategori')->nullable()->unique();
             // $table->string('id_user')->nullable()->unique();
-            $table->foreignId('kategoriwo_id');
-            $table->foreignId('userwo_id');
+            $table->foreignId('kategoriwo_id')->nullable();
+            $table->foreignId('userwo_id')->nullable();
 
             $table->timestamps();
             $table->string('nama_pic');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('nomor_komplain')->nullable();
             $table->enum('prioritas', ['rendah', 'menengah', 'tinggi'])->nullable();
             $table->enum('jenis_servis', ['internal', 'external'])->nullable();
@@ -31,9 +31,9 @@ return new class extends Migration
             $table->dateTime('waktu_ambil', $precision = 0)->nullable();
             $table->dateTime('waktu_selesai', $precision = 0)->nullable();
             $table->time('waktu_estimasi', $precision = 0)->nullable();
-            $table->text('masalah');
-            $table->text('solusi')->nullable();
-            $table->enum('status', ['Belum dikerjakan', 'Sedang dikerjakan', 'Selesai'])->nullable();
+            $table->string('keluhan');
+            $table->string('solusi')->nullable();
+            $table->enum('status', ['Belum dikerjakan', 'Sedang dikerjakan', 'Selesai']);
         });
     }
 
