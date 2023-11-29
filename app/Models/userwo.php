@@ -11,13 +11,15 @@ class userwo extends Model
 {
     use HasFactory;
 
-    protected $table = 'userwos';
-    protected $guarded = ['id'];
-    protected $fillable = [
-        'name',
-        'username',
-        'password',
-    ];
+    protected $table = 'admin';
+    protected $primaryKey = 'admin_id';
+
+   protected $fillable = [
+       'name',
+       'unit',
+       'username',
+       'password',
+   ];
     public function workorder():HasMany
     {
         return $this->hasMany(workorder::class);

@@ -18,9 +18,10 @@ class WorkOrderFactory extends Factory
     {
         return [
             //
-            'nama_pic' => fake()->name(),
+            'user' => fake()->name(),
+            'unit' => fake()->state(),
             'kategoriwo_id' => fake()->randomDigitNot(0, 5, 6, 7, 8, 9),
-            'userwo_id' => '1',
+            'admin_id' => '1',
             'slug' => fake()->name(),
             'nomor_komplain' => fake()->randomNumber(5, false),
             'prioritas' => 'menengah',
@@ -32,6 +33,7 @@ class WorkOrderFactory extends Factory
             'keluhan' => fake()->paragraph(),
             'solusi' => fake()->paragraph(),
             'status' => 'Belum Dikerjakan',
+            'perangkat' => 'LAINNYA',
         ];
     }
 }

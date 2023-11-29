@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\workorder::factory(10)->create();
+    \App\Models\workorder::factory(10)->create();
         \App\Models\userwo::factory(10)->create();
 
         $this->call(UserwoSeeder::class);

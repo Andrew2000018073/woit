@@ -42,16 +42,20 @@ class UserRequestController extends Controller
     {
         //validate form
         $validatedData= $request->validate([
-            'nama_pic'     => 'required|min:5',
-            'keluhan'   => 'required|min:10'
+            'user'     => 'required|min:5',
+            'unit'     => 'required',
+            'keluhan'   => 'required|min:10',
+            'perangkat'=>'required'
         ]);
 
         //create post
+        $validatedData['nomor_referensi'] = fake()->randomNumber(5, false);
         $validatedData['status'] = 'Belum dikerjakan';
         workorder::create($validatedData);
 
         //redirect to index
-        return redirect('/user/permintaan/create')->with('sucsess', 'New Post has been added!');
+        return redirect('/user/permintaan/create')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
+        // return redirect('/user/permintaan/create')->with('succsess',)
     }
 
     /**
