@@ -82,7 +82,7 @@
                                                     <td>{{ $respon->waktu_selesai }}</td>
 
                                                     <td>{{ $respon->solusi }}</td>
-                                                    <td>{{ $respon->masalah }}</td>
+                                                    <td>{{ $respon->keluhan }}</td>
                                                     <td>{{ $respon->status }}</td>
                                                     <td>{{ $respon->waktu_estimasi }}</td>
                                                     <td><a href="/daftar-wo/detail" class="btn btn-primary">Detail</a>

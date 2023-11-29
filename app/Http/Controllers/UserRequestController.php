@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\workorder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Console\View\Components\Alert;
 
 class UserRequestController extends Controller
 {
@@ -48,7 +51,7 @@ class UserRequestController extends Controller
         workorder::create($validatedData);
 
         //redirect to index
-        return redirect('/user/permintaan/create')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect('/user/permintaan/create')->with('sucsess', 'New Post has been added!');
     }
 
     /**
