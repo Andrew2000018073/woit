@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\workorder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class userwo extends Model
+class Admin extends Model
 {
     use HasFactory;
 

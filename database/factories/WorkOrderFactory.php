@@ -24,6 +24,7 @@ class WorkOrderFactory extends Factory
             'admin_id' => '1',
             'slug' => fake()->name(),
             'nomor_komplain' => fake()->randomNumber(5, false),
+            'nomor_referensi' => fake()->randomNumber(5, false),
             'prioritas' => 'menengah',
             'jenis_servis' => 'internal',
             'waktu_pengajuan' => now(),

@@ -34,9 +34,9 @@ return new class extends Migration
             $table->dateTime('waktu_selesai', $precision = 0)->nullable();
             $table->time('waktu_estimasi', $precision = 0)->nullable();
             $table->time('durasi', $precision = 0)->nullable();
-            $table->string('keluhan');
-            $table->string('analisis')->nullable();
-            $table->string('solusi')->nullable();
+            $table->text('keluhan');
+            $table->text('analisis')->nullable();
+            $table->text('solusi')->nullable();
             $table->enum('status', ['Belum dikerjakan', 'Sedang dikerjakan', 'Selesai']);
             $table->enum('perangkat', ['CPU', 'MONITOR', 'MOUSE', 'KEYBOARD', 'JARINGAN', 'SPEAKER', 'PRINTER','LAINNYA']);
         });

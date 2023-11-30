@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\userwo;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class UserwoSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,8 +20,8 @@ class UserwoSeeder extends Seeder
     public function run()
     {
         //
-        userwo::truncate();
-        userwo::create([
+        Admin::truncate();
+        Admin::create([
             'nama' => "Andrew",
             'username' => 'andrew',
             'password' => bcrypt('password'),
