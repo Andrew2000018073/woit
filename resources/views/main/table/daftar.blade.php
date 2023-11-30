@@ -72,7 +72,7 @@
                                             @foreach ($filter as $respon)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $respon->userwo->nama }}</td>
+                                                    <td>{{ $respon->admin->nama }}</td>
                                                     <td> {{ $respon->kategoriwo->nama_kategori }} </td>
                                                     <td>{{ $respon->nomor_komplain }}</td>
                                                     <td>{{ $respon->prioritas }} </td>

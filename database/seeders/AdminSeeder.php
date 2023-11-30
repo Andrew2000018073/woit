@@ -3,12 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
-use App\Models\userwo;
-use Illuminate\Support\Str;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
 {
@@ -26,5 +22,6 @@ class AdminSeeder extends Seeder
             'username' => 'andrew',
             'password' => bcrypt('password'),
         ]);
+
     }
 }

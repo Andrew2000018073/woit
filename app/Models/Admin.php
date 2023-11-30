@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\workorder;
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Sanctum\Contracts\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 
 class Admin extends Model
 {
-    use HasFactory;
-
+    use  HasFactory, Notifiable;
     protected $table = 'admin';
-    protected $primaryKey = 'admin_id';
+    protected $guarded = ['id'];
+    // protected $primaryKey = 'admin_id';
 
    protected $fillable = [
        'name',
@@ -21,8 +21,10 @@ class Admin extends Model
        'username',
        'password',
    ];
-    public function workorder():HasMany
-    {
-        return $this->hasMany(workorder::class);
-    }
+
+   public function workorder()
+   {
+       return $this->hasMany(workorder::class);
+   }
+
 }

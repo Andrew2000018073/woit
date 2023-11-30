@@ -23,11 +23,14 @@ class DatabaseSeeder extends Seeder
     workorder::factory(10)->create();
     Admin::factory(10)->create();
 
-        $this->call(AdminSeeder::class);
-        Admin::factory()->create([
-            'nama' => "Andrew",
-            'username' => 'andrew',
-            'password' => bcrypt('password'),
-        ]);
+    $this->call(AdminSeeder::class);
+
+
+        $this->call(KategoriwoSeeder::class);
+        // Admin::factory()->create([
+        //     'nama' => "Andrew",
+        //     'username' => 'andrew',
+        //     'password' => bcrypt('password'),
+        // ]);
     }
 }

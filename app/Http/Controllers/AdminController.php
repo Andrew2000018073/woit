@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\userwo;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Models\Admin;
+use App\Http\Requests\StoreAdminRequest;
+use App\Http\Requests\UpdateAdminRequest;
 
-class UserWoController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,6 @@ class UserWoController extends Controller
     public function index()
     {
         //
-        $data = userwo::limit(1)->get();
-        return view('main.dashboard', compact('data'));
     }
 
     /**
@@ -33,10 +31,10 @@ class UserWoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreAdminRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAdminRequest $request)
     {
         //
     }
@@ -44,10 +42,10 @@ class UserWoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\userwo  $user_wo
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(userwo $user_wo)
+    public function show(Admin $admin)
     {
         //
     }
@@ -55,10 +53,10 @@ class UserWoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\userwo  $user_wo
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(userwo $user_wo)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -66,11 +64,11 @@ class UserWoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\userwo  $user_wo
+     * @param  \App\Http\Requests\UpdateAdminRequest  $request
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, userwo $user_wo)
+    public function update(UpdateAdminRequest $request, Admin $admin)
     {
         //
     }
@@ -78,10 +76,10 @@ class UserWoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\userwo  $user_wo
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(userwo $user_wo)
+    public function destroy(Admin $admin)
     {
         //
     }
