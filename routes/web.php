@@ -65,7 +65,7 @@ Route::get('/user/cek-proses', function () {
     return view('user.progress', ['type_menu' => 'user']);
 });
 Route::get('/user/rating', function () {
-
+    return view('user.rating');
 });
 
 // Route::redirect('/', '/dashboard-general-dashboard');

@@ -8,29 +8,28 @@
 
 @section('main')<div class="main-content">
         <section class="section">
+            <div class="section-header">
+                <h1>Cek Proses Pengerjaan</h1>
+            </div>
             <div class="section-body mt-5">
                 <div class="row ">
-                    <div class="col-2"></div>
-                    <div class="col-8">
+                    <div class="col-4"></div>
+                    <div class="col-4">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>Cek Proses Pengerjaan</h4>
-                            </div>
                             <div class="card-body">
                                 <form>
-                                    <div class="row">
-                                        <div class="col">
 
-                                            <div class="mb-3">
+                                    <div class="col">
 
-                                                <input type="text" class="form-control" id=""
-                                                    placeholder="Nomor Komplain">
+                                        <div class="mb-3">
 
-                                            </div>
+                                            <input type="text" class="form-control mt-3" id=""
+                                                placeholder="Nomor Komplain">
+
                                         </div>
-                                        <div class="col mt-1">
-                                            <button type="button" class="btn btn-primary" id="swal-4">Cek</button>
-                                        </div>
+                                    </div>
+                                    <div class="col mt-1 text-center">
+                                        <button type="button" class="btn btn-primary" id="swal-4">Cek</button>
                                     </div>
 
 
@@ -39,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-4"></div>
                 </div>
             </div>
             <script>

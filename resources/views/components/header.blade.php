@@ -3,12 +3,19 @@
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li class="mt-1">
+                <iframe
+                    src="https://free.timeanddate.com/clock/i94tvgsy/n666/tlid38/fn2/fs12/fcfff/tct/pct/ftb/tt0/tw0/tm1/th1/tb1"
+                    frameborder="0" width="148" height="20" allowtransparency="true"></iframe>
+            </li>
+
         </ul>
     </form>
 
 
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown"><a href="" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+        <li class="dropdown"><a href="" data-toggle="dropdown"
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, Andrew</div>
             </a>
