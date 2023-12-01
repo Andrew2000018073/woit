@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DaftarWo;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Respond;
 use App\Http\Controllers\UserRequest;
@@ -23,12 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 
 // Admin
-Route::get('/login', [LoginController::class, 'index'])->name('index');
-Route::post('/contoh', [LoginController::class, 'contoh'])->name('contoh');
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::get('/dashboard', function () {
-    return view('main.dashboard', ['type_menu' => 'detail']);
-});
+Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
+
+// Route::get('/dashboard', function () {
+//     return view('main.dashboard', ['type_menu' => 'detail']);
+// });
 
 // Route::resource('/dashboard', UserWoController::class,  ['type_menu' => 'components']);
 // Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
@@ -58,15 +61,15 @@ Route::get('/form-detail', function () {
 
 // User
 
-Route::resource('/user/permintaan', UserRequestController::class);
+Route::resource('/user/permintaan', UserRequestController::class)->middleware('guest');
 
 
 Route::get('/user/cek-proses', function () {
     return view('user.progress', ['type_menu' => 'user']);
-});
+})->middleware('guest');
 Route::get('/user/rating', function () {
     return view('user.rating');
-});
+})->middleware('guest');
 
 // Route::redirect('/', '/dashboard-general-dashboard');
 

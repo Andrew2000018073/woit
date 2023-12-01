@@ -28,7 +28,10 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nomor Komplain</th>
+                                                <th>Nomor Referensi</th>
+                                                <th>Nama PIC</th>
+                                                <th>Unit</th>
+                                                <th>Perangkat</th>
                                                 <th>Masalah</th>
                                                 <th>Tanggal Pengajuan</th>
                                                 <th>Aksi</th>
@@ -40,7 +43,10 @@
                                             @foreach ($data as $respon)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $respon->nomor_komplain }}</td>
+                                                    <td>{{ $respon->nomor_referensi }}</td>
+                                                    <td>{{ $respon->user }}</td>
+                                                    <td>{{ $respon->unit }}</td>
+                                                    <td>{{ $respon->perangkat }}</td>
                                                     <td>{{ $respon->keluhan }}</td>
                                                     <td>{{ $respon->waktu_pengajuan }}</td>
                                                     <td><a href="/form-detail" class="btn btn-primary">Detail</a></td>

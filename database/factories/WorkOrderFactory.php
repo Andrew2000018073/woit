@@ -19,8 +19,8 @@ class WorkOrderFactory extends Factory
         return [
             //
             'user' => fake()->name(),
-            'unit' => fake()->state(),
-            'kategoriwo_id' => fake()->randomDigitNot(0, 5, 6, 7, 8, 9),
+            'unit' => fake()->randomElement(['IT','Manajemen', 'Pengembangan', 'Marketing', 'Manajemen']),
+            'kategoriwo_id' => fake()->randomElement([1,2, 3, 4]),
             'admin_id' => '1',
             'slug' => fake()->name(),
             'nomor_komplain' => fake()->randomNumber(5, false),
@@ -33,8 +33,8 @@ class WorkOrderFactory extends Factory
             'waktu_estimasi' => now(),
             'keluhan' => fake()->paragraph(),
             'solusi' => fake()->paragraph(),
-            'status' => 'Belum Dikerjakan',
-            'perangkat' => 'LAINNYA',
+            'status' => fake()->randomElement(['Belum dikerjakan', 'Sedang dikerjakan', 'Selesai']),
+            'perangkat' => fake()->randomElement(['CPU', 'MONITOR', 'MOUSE', 'KEYBOARD', 'JARINGAN', 'SPEAKER', 'PRINTER','LAINNYA']),
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -14,11 +15,22 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function contoh(Request $request)
+    public function authenticate(Request $request): RedirectResponse
     {
-        if (Auth::attempt($request->only('username', 'password'))) {
-            return redirect('/dashboard');
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+        // dd($credentials);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard');
         }
-        return redirect('/login');
+
+        return back()->withErrors([
+            'loginreor','Login failed'
+        ]);
     }
 }
