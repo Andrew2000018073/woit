@@ -38,9 +38,9 @@ Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth
 
 Route::get('/admintambahtugas', function () {
     return view('main.form.adminnambah', ['type_menu' => 'components']);
-});
+})->middleware('auth');
 
-Route::resource('/tambahtugas', WorkorderController::class);
+// Route::resource('/tambahtugas', WorkorderController::class);
 
 Route::get('/adminugas', function () {
     return view('main.table.proses', ['type_menu' => 'components']);

@@ -40,7 +40,7 @@
 
                                         </thead>
                                         <tbody>
-                                            @foreach ($data as $respon)
+                                            @foreach ($info as $respon)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $respon->nomor_referensi }}</td>
@@ -49,7 +49,8 @@
                                                     <td>{{ $respon->perangkat }}</td>
                                                     <td>{{ $respon->keluhan }}</td>
                                                     <td>{{ $respon->waktu_pengajuan }}</td>
-                                                    <td><a href="/form-detail" class="btn btn-primary">Detail</a></td>
+                                                    <td><a href="/respon/{{ $respon->slug }} }}"
+                                                            class="btn btn-primary">Detail</a></td>
                                                 </tr>
                                         </tbody>
                                         @endforeach

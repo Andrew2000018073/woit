@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\workorder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Respond extends Controller
 {
@@ -12,7 +13,9 @@ class Respond extends Controller
     {
         // $data = ['data' => workorder::get()];
 
-        $data = ['data' => DB::table('workorders')->where('status', 'Belum dikerjakan')->get()];
-        return view('main.table.respon', $data);
+        $info = ['info' => DB::table('workorders')->where('status', 'Belum dikerjakan')->get()];
+        return view('main.table.respon', $info, [
+            'data'=>$id = Auth::user()
+        ]);
     }
 }
