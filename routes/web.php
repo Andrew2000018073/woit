@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 // Admin
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
 
@@ -46,7 +47,8 @@ Route::get('/adminugas', function () {
     return view('main.table.proses', ['type_menu' => 'components']);
 });
 
-Route::get('/respond-permintaan', [Respond::class, 'index']);
+Route::get('/respond', [Respond::class, 'index']);
+Route::get('/respon/{id_workorder}', [Respond::class, 'respon']);
 Route::get('/daftar-wo', [DaftarWo::class, 'index']);
 // Route::get('/respond-permintaan', function () {
 //     return view('main.table.respon', ['type_menu' => 'response']);
@@ -62,6 +64,7 @@ Route::get('/form-detail', function () {
 // User
 
 Route::resource('/user/permintaan', UserRequestController::class)->middleware('guest');
+
 
 
 Route::get('/user/cek-proses', function () {

@@ -14,8 +14,13 @@ class Respond extends Controller
         // $data = ['data' => workorder::get()];
 
         $info = ['info' => DB::table('workorders')->where('status', 'Belum dikerjakan')->get()];
-        return view('main.table.respon', $info, [
+        return view('main.respon.index', $info, [
             'data'=>$id = Auth::user()
         ]);
+    }
+
+    public function respon(){
+        return view('main.respon.respon',['data'=>$id = Auth::user()]);
+
     }
 }

@@ -33,4 +33,9 @@ class LoginController extends Controller
             'loginreor','Login failed'
         ]);
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
 }

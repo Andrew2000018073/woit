@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\workorder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Console\View\Components\Alert;
+
 
 class UserRequestController extends Controller
 {
@@ -47,14 +47,14 @@ class UserRequestController extends Controller
             'keluhan'   => 'required|min:10',
             'perangkat'=>'required'
         ]);
-
+        dd($validatedData);
         //create post
-        $validatedData['nomor_referensi'] = fake()->randomNumber(5, false);
-        $validatedData['status'] = 'Belum dikerjakan';
-        workorder::create($validatedData);
+        // $validatedData['nomor_referensi'] = fake()->randomNumber(5, false);
+        // $validatedData['status'] = 'Belum dikerjakan';
+        // workorder::create($validatedData);
 
         //redirect to index
-        return redirect('/user/permintaan/create')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
+        // return redirect('/user/permintaan/create')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
         // return redirect('/user/permintaan/create')->with('succsess',)
     }
 

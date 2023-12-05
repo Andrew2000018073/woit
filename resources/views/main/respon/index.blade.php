@@ -49,7 +49,7 @@
                                                     <td>{{ $respon->perangkat }}</td>
                                                     <td>{{ $respon->keluhan }}</td>
                                                     <td>{{ $respon->waktu_pengajuan }}</td>
-                                                    <td><a href="/respon/{{ $respon->slug }} }}"
+                                                    <td><a href="/respon/{{ $respon->id_workorder }} "
                                                             class="btn btn-primary">Detail</a></td>
                                                 </tr>
                                         </tbody>
