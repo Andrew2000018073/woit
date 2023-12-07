@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('workorders', function (Blueprint $table) {
-            $table->id('id_workorder')->autoIncrement();
+            $table->id()->autoIncrement();
 
             // $table->string('id_kategori')->nullable()->unique();
             // $table->string('id_user')->nullable()->unique();
             $table->foreignId('kategoriwo_id')->nullable();
             $table->foreignId('admin_id')->nullable();
+            $table->foreignId('id_perangkat')->nullable();
 
             $table->timestamps();
             $table->string('user');

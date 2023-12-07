@@ -4,6 +4,7 @@
 
 @push('style')
     <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('library/select2/dist/css/select2.min.css') }}">
 @endpush
 
 @section('main')<div class="main-content">
@@ -30,6 +31,7 @@
                                 <div class="card-header">
                                     <h4>Hal yang akan diservis</h4>
                                 </div>
+                                {{-- Bagian ikon card pertama --}}
                                 <div class="card-body">
                                     <div class="card-body">
                                         <div class="form-group">
@@ -39,25 +41,25 @@
                                                     <input type="radio" name="perangkat" value="CPU"
                                                         class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-solid fa-computer"></i> CPU</span>
+                                                            class="fa-solid fa-computer mr-2"></i> CPU</span>
                                                 </label>
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="perangkat" value="KEYBOARD"
-                                                        class="selectgroup-input" checked="">
+                                                        class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-regular fa-keyboard"></i> KEYBOARD</span>
+                                                            class="fa-regular fa-keyboard mr-2"></i> KEYBOARD</span>
                                                 </label>
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="perangkat" value="MONITOR"
                                                         class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-solid fa-desktop"></i> MONITOR</span>
+                                                            class="fa-solid fa-desktop mr-2"></i> MONITOR</span>
                                                 </label>
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="perangkat" value="MOUSE"
                                                         class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-solid fa-computer-mouse"></i> MOUSE</span>
+                                                            class="fa-solid fa-computer-mouse mr-2"></i> MOUSE</span>
                                                 </label>
                                             </div>
                                             <div class="selectgroup w-100 mt-5">
@@ -65,31 +67,32 @@
                                                     <input type="radio" name="perangkat" value="JARINGAN"
                                                         class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-solid fa-network-wired"></i> JARINGAN</span>
+                                                            class="fa-solid fa-network-wired mr-2"></i> JARINGAN</span>
                                                 </label>
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="perangkat" value="SPEAKER"
-                                                        class="selectgroup-input" checked="">
+                                                        class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-solid fa-volume-off"></i> SPEAKER</span>
+                                                            class="fa-solid fa-volume-off mr-2"></i> SPEAKER</span>
                                                 </label>
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="perangkat" value="PRINTER"
                                                         class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-solid fa-print"></i> PRINTER</span>
+                                                            class="fa-solid fa-print mr-2"></i> PRINTER</span>
                                                 </label>
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="perangkat" value="LAINNYA"
                                                         class="selectgroup-input">
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
-                                                            class="fa-solid fa-otter"></i> LAINNYA</span>
+                                                            class="fa-solid fa-otter mr-2"></i> LAINNYA</span>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{-- Card Kedua --}}
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Detail pengajuan</h4>
@@ -159,9 +162,9 @@
 @endsection
 
 @push('scripts')
-    {{-- <!-- JS Libraies -->
-    <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
+    <!-- JS Libraies -->
+    <script src="{{ asset('library/select2/dist/js/select2.full.min.js') }}"></script>
+
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('js/custom/user-request.js') }}"></script> --}}
 @endpush

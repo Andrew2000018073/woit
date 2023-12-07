@@ -47,14 +47,15 @@ class UserRequestController extends Controller
             'keluhan'   => 'required|min:10',
             'perangkat'=>'required'
         ]);
-        dd($validatedData);
-        //create post
-        // $validatedData['nomor_referensi'] = fake()->randomNumber(5, false);
-        // $validatedData['status'] = 'Belum dikerjakan';
-        // workorder::create($validatedData);
+        // dd($validatedData);
+        // create post
+        $validatedData['nomor_referensi'] = fake()->randomNumber(5, false);
+        $validatedData['status'] = 'Belum dikerjakan';
+        $validatedData['waktu_pengajuan'] = now();
+        workorder::create($validatedData);
 
-        //redirect to index
-        // return redirect('/user/permintaan/create')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
+        // redirect to index
+        return redirect('/user/permintaan/create')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
         // return redirect('/user/permintaan/create')->with('succsess',)
     }
 

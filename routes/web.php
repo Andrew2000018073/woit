@@ -4,6 +4,7 @@ use App\Http\Controllers\DaftarWo;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Respond;
+use App\Http\Controllers\RespondController;
 use App\Http\Controllers\UserRequest;
 use App\Http\Controllers\UserRequestController;
 use App\Http\Controllers\UserWoController;
@@ -28,7 +29,16 @@ Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
+Route::middleware(['auth.data'])->group(function () {
+    // Your routes go here
+    Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
+
+    Route::get('/admintambahtugas', function () {
+        return view('main.form.adminnambah', ['type_menu' => 'components']);
+    })->middleware('auth');
+
+
+
 
 // Route::get('/dashboard', function () {
 //     return view('main.dashboard', ['type_menu' => 'detail']);
@@ -37,29 +47,36 @@ Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth
 // Route::resource('/dashboard', UserWoController::class,  ['type_menu' => 'components']);
 // Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
-Route::get('/admintambahtugas', function () {
-    return view('main.form.adminnambah', ['type_menu' => 'components']);
-})->middleware('auth');
 
 // Route::resource('/tambahtugas', WorkorderController::class);
 
 Route::get('/adminugas', function () {
     return view('main.table.proses', ['type_menu' => 'components']);
-});
+})->middleware('auth');
 
-Route::get('/respond', [Respond::class, 'index']);
-Route::get('/respon/{id_workorder}', [Respond::class, 'respon']);
+
+
+// Route::get('/respond', [Respond::class, 'index']);
+// Route::get('/respond/{id_workorder}', [Respond::class, 'respon']);
+
+Route::resource('/respond', RespondController::class);
+// Route::get('/respond', [RespondController::class,'update']);
+
+// Route::resource('/respond/{id_workorder}/update', RespondController::class);
+
+
 Route::get('/daftar-wo', [DaftarWo::class, 'index']);
 // Route::get('/respond-permintaan', function () {
-//     return view('main.table.respon', ['type_menu' => 'response']);
-// });
-Route::get('/daftar-wo/detail', function () {
-    return view('main.detail.index', ['type_menu' => 'detail']);
-});
-Route::get('/form-detail', function () {
-    return view('main.form.detail', ['type_menu' => 'detail']);
-});
+    //     return view('main.table.respon', ['type_menu' => 'response']);
+    // });
+    Route::get('/daftar-wo/detail', function () {
+        return view('main.detail.index', ['type_menu' => 'detail']);
+    });
+    Route::get('/form-detail', function () {
+        return view('main.form.detail', ['type_menu' => 'detail']);
+    });
 
+});
 
 // User
 

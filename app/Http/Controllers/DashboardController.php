@@ -24,7 +24,7 @@ class DashboardController extends Controller
         // $id = Auth::user();
 
         return view('main.dashboard', [
-            'data'=>$id = Auth::user()
+            'nama'=>$id = Auth::user()
         ]);
     }
 }

@@ -19,19 +19,19 @@ class KategoriwoSeeder extends Seeder
         //
         $data = [[
             'nama_kategori' => 'Aset',
-            'slug' => 'aset',
+            'singkatan' => 'AST',
             'keterangan' => fake()->sentence(10),
         ], [
             'nama_kategori' => 'Jaringan',
-            'slug' => 'jaringan',
+            'singkatan' => 'JRG',
             'keterangan' => fake()->sentence(8),
         ], [
             'nama_kategori' => 'Pemeliharaan Software',
-            'slug' => 'pemelirahaan-software',
+            'singkatan' => 'SFT',
             'keterangan' => fake()->sentence(15),
         ], [
             'nama_kategori' => 'Konfigurasi Sistem',
-            'slug' => 'konfigurasi-sistem',
+            'singkatan' => 'KSM',
             'keterangan' => fake()->sentence(15),
         ]];
 

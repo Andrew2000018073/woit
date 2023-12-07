@@ -131,7 +131,7 @@
     <script src="{{ asset('library/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('library/chart.js/dist/Chart.min.js') }}"></script>
     <script src="https://cdnjs.com/libraries/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
 
     <!-- Page Specific JS File -->

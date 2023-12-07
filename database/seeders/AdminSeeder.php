@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AdminSeeder extends Seeder
 {
@@ -15,13 +16,19 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        //
-        Admin::truncate();
-        Admin::create([
-            'nama' => "Andrew",
-            'username' => 'andrew',
-            'password' => bcrypt('password'),
-        ]);
+
+
+    $data = [[
+        'nama' => "Andrew",
+        'username' => 'andrew',
+        'password' => bcrypt('password'),
+    ],[
+        'nama' => "Alfi",
+        'username' => 'alfi',
+        'password' => bcrypt('password'),
+    ]];
+
+    DB::table('admin')->insert($data);
 
     }
 }
