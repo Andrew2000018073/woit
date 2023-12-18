@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Respond;
 use App\Http\Controllers\RespondController;
+use App\Http\Controllers\SelesaiController;
+use App\Http\Controllers\TugasController;
 use App\Http\Controllers\UserRequest;
 use App\Http\Controllers\UserRequestController;
 use App\Http\Controllers\UserWoController;
@@ -37,7 +39,18 @@ Route::middleware(['auth.data'])->group(function () {
         return view('main.form.adminnambah', ['type_menu' => 'components']);
     })->middleware('auth');
 
+    Route::get('/tugas', [TugasController::class,'index'])->middleware('auth');
+    Route::get('/tugas/{id}/edit', [TugasController::class,'edit'])->middleware('auth');
+    Route::put('/tugas/{id}/', [TugasController::class,'update'])->middleware('auth');
 
+    Route::get('/selesai', [SelesaiController::class,'index'])->middleware('auth');
+
+    Route::get('/forms-advanced-form', function () {
+        return view('pages.forms-advanced-form', ['type_menu' => 'forms']);
+    });
+    Route::get('/modules-sweet-alert', function () {
+            return view('pages.modules-sweet-alert', ['type_menu' => 'modules']);
+        });
 
 
 // Route::get('/dashboard', function () {
@@ -50,22 +63,22 @@ Route::middleware(['auth.data'])->group(function () {
 
 // Route::resource('/tambahtugas', WorkorderController::class);
 
-Route::get('/adminugas', function () {
-    return view('main.table.proses', ['type_menu' => 'components']);
-})->middleware('auth');
+// Route::get('/adminugas', function () {
+//     return view('main.table.proses', ['type_menu' => 'components']);
+// })->middleware('auth');
 
 
 
 // Route::get('/respond', [Respond::class, 'index']);
 // Route::get('/respond/{id_workorder}', [Respond::class, 'respon']);
 
-Route::resource('/respond', RespondController::class);
+    Route::resource('/respond', RespondController::class);
 // Route::get('/respond', [RespondController::class,'update']);
 
 // Route::resource('/respond/{id_workorder}/update', RespondController::class);
 
 
-Route::get('/daftar-wo', [DaftarWo::class, 'index']);
+    Route::get('/daftar-wo', [DaftarWo::class, 'index']);
 // Route::get('/respond-permintaan', function () {
     //     return view('main.table.respon', ['type_menu' => 'response']);
     // });
@@ -77,6 +90,7 @@ Route::get('/daftar-wo', [DaftarWo::class, 'index']);
     });
 
 });
+
 
 // User
 

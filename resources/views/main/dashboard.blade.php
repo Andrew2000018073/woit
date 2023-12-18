@@ -20,105 +20,66 @@
             @endauth
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-primary">
-                            <i class="fas fa-truck-arrow-right" style="color: #ffffff;"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Eksternal</h4>
-                            </div>
-                            <div class="card-body">
-                                10
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-danger">
-                            <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
-                            <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
-                            <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Prioritas Tinggi </h4>
-                            </div>
-                            <div class="card-body">
-                                42
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-warning">
-                            <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
-                            <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Prioritas Menengah</h4>
-                            </div>
-                            <div class="card-body">
-                                1,201
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-success">
-                            <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
 
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Prioritas Rendah</h4>
+                <div class="col">
+                    <div class="card card-statistic-1">
+                        <a href="{{ url('respond') }}">
+                            <div class="card-icon bg-danger">
+                                <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
+                                <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
+                                <i class="fas fa-exclamation fa-bounce" style="color: #ffffff;"></i>
                             </div>
-                            <div class="card-body">
-                                47
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Belum diambil </h4>
+                                </div>
+                                <div class="card-body">
+                                    {{ $belum }}
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="card card-statistic-1">
+                        <a href="{{ url('tugas') }}">
+                            <div class="card-icon bg-warning">
+                                <i class="fas fa-screwdriver-wrench" style="color: #ffffff;"></i>
 
-                <!-- Chart -->
-                <div class="col-12 ">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Tabel Servis Yang Dilakukan Pada Tahun Ini</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="filterByjenis" height="100"></canvas>
-                        </div>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Sedang dikerjakan</h4>
+                                </div>
+                                <div class="card-body">
+                                    {{ $sedang }}
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Total Perangkat Yang Diservis</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="kategoriwo"></canvas>
-                        </div>
-                    </div>
-                </div>
+                <div class="col" href>
+                    <div class="card card-statistic-1">
+                        <a href="{{ url('daftar-wo') }}">
+                            <div class="card-icon bg-success">
+                                <i class="fas fa-circle-check " style="color: #ffffff;"></i>
 
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Akurasi</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="akurasi" height="315"></canvas>
-                        </div>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4>Sudah Selesai</h4>
+                                    <div class="card-body">
+                                        {{ $sudah }}
+                                    </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+
+
+    </div>
+    </div>
 
 
     </div>

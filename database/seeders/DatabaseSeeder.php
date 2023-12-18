@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    workorder::factory(10)->create();
+    workorder::factory(20)->create();
     Admin::factory(10)->create();
 
     $this->call(AdminSeeder::class);

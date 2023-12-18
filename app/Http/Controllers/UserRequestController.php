@@ -42,13 +42,12 @@ class UserRequestController extends Controller
     {
         //validate form
         $validatedData= $request->validate([
-            'user'     => 'required|min:5',
+            'user'     => 'required|min:4',
             'unit'     => 'required',
             'keluhan'   => 'required|min:10',
             'perangkat'=>'required'
         ]);
-        // dd($validatedData);
-        // create post
+
         $validatedData['nomor_referensi'] = fake()->randomNumber(5, false);
         $validatedData['status'] = 'Belum dikerjakan';
         $validatedData['waktu_pengajuan'] = now();
@@ -56,7 +55,6 @@ class UserRequestController extends Controller
 
         // redirect to index
         return redirect('/user/permintaan/create')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
-        // return redirect('/user/permintaan/create')->with('succsess',)
     }
 
     /**

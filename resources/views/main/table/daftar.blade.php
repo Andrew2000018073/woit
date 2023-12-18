@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Table')
+@section('title', 'Advanced Forms')
 
 @push('style')
-    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('library/bootstrap-daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 @endpush
 
 @section('main')
@@ -15,116 +21,195 @@
 
 
             <div class="section-body">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="row">
-                                    <div class="col">
-                                        <h4>Servis Berdasarkan</h4>
-                                        {{-- <form action="/daftar-wo" method="get">
-                                            @csrf
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <select class="form-label" name="status" id="status">
-                                                            <option value="">Semua Status</option>
-                                                            <option value="Belum dikerjakan">Belum dikerjakan</option>
-                                                            <option value="Sedang dikerjakan">Sedang dikerjakan</option>
-                                                            <option value="Selesai">Selesai</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col">
-                                                        <button type="submit" class="btn btn-primary mt-4">Search</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form> --}}
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Filter</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/daftar-wo" method="get">
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="input-group">
+                                        <input id="myInput" type="text" class="form-control text-center"
+                                            placeholder="Cari Nomor Komplain" name="nokomplain"
+                                            value="{{ old('nokomplain') }}">
+
                                     </div>
 
                                 </div>
-                            </div>
+                                <div class="col">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" style="width: 150%">
+                                            <input type="text" name="datetimes" placeholder="Select Date Range"
+                                                class="text-center" style="width: 150%">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-calendar"></i>
+                                            </div>
 
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table-bordered table-md table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Admin</th>
-                                                <th>Kategori</th>
-                                                <th>Nomor Komplain</th>
-                                                <th>Prioritas</th>
-                                                <th>Jenis Servis</th>
-                                                <th>Waktu Pengajuan</th>
-                                                <th>Waktu Ambil</th>
-                                                <th>Waktu Selesai</th>
-                                                <th>Solusi</th>
-                                                <th>Masalah</th>
-                                                <th>Status</th>
-                                                <th>Waktu Estimasi</th>
-                                                <th>Aksi</th>
-                                            </tr>
-
-
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($filter as $respon)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $respon->admin->nama }}</td>
-                                                    <td> {{ $respon->kategoriwo->nama_kategori }} </td>
-                                                    <td>{{ $respon->nomor_komplain }}</td>
-                                                    <td>{{ $respon->prioritas }} </td>
-                                                    <td>{{ $respon->jenis_servis }} </td>
-                                                    <td>{{ $respon->waktu_pengajuan }} </td>
-                                                    <td>{{ $respon->waktu_ambil }}</td>
-                                                    <td>{{ $respon->waktu_selesai }}</td>
-
-                                                    <td>{{ $respon->solusi }}</td>
-                                                    <td>{{ $respon->keluhan }}</td>
-                                                    <td>{{ $respon->status }}</td>
-                                                    <td>{{ $respon->waktu_estimasi }}</td>
-                                                    <td><a href="/daftar-wo/detail" class="btn btn-primary">Detail</a>
-                                                    </td>
-
-                                                </tr>
-                                        </tbody>
-                                        @endforeach
-                                    </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-footer text-right">
-                                <nav class="d-inline-block">
-                                    <ul class="pagination mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1"><i
-                                                    class="fas fa-chevron-left"></i></a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1 <span
-                                                    class="sr-only">(current)</span></a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
+
+                            <div class="row mt-3">
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <select class="form-control select2" name="prioritas">
+                                            <option value=" ">Prioritas</option>
+                                            <option value="rendah">Rendah</option>
+                                            <option value="menengah">Menengah</option>
+                                            <option value="tinggi">Tinggi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <select class="form-control select2" name="jenis_servis">
+                                            <option value=" ">Jenis Servis</option>
+                                            <option value="internal">Internal</option>
+                                            <option value="external">Eksternal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <select class="form-control select2" name="status" required>
+                                            <option value=" ">Status</option>
+                                            <option value="Belum dikerjakan">Belum dikerjakan</option>
+                                            <option value="Sedang dikerjakan">Sedang dikerjakan</option>
+                                            <option value="Selesai">Selesai</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="form-group row mb-4">
+                                    <div class="col-sm-12 col-md-7">
+                                        <button class="btn btn-primary" type="submit" name="submit"
+                                            id="submit">SUBMIT</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Data Servis</h4>
+                        <div class="card-header-form mr-5">
+
+
                         </div>
+                        <div class="card-header-form mr-5">
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped" id="bababoey">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Admin</th>
+                                        <th>Kategori</th>
+                                        <th>Nomor Komplain</th>
+                                        <th>Prioritas</th>
+                                        <th>Jenis Servis</th>
+                                        <th>Waktu Pengajuan</th>
+                                        <th>Waktu Ambil</th>
+                                        <th>Waktu Selesai</th>
+                                        <th>Solusi</th>
+                                        <th>Masalah</th>
+                                        <th>Status</th>
+                                        <th>Waktu Estimasi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data as $respon)
+                                        <tr>
+                                            <td>{{ $loop->iteration + $lastnumber }}</td>
+                                            <td>{{ $respon->admin->nama }}</td>
+                                            <td>{{ $respon->kategoriwo->nama_kategori }}</td>
+                                            <td>{{ $respon->nomor_komplain }}</td>
+                                            <td>{{ $respon->prioritas }}</td>
+                                            <td>{{ $respon->jenis_servis }}</td>
+                                            <td>{{ $respon->waktu_pengajuan }}</td>
+                                            <td>{{ $respon->waktu_ambil }}</td>
+                                            <td>{{ $respon->waktu_selesai }}</td>
+                                            <td>{{ $respon->solusi }}</td>
+                                            <td>{{ $respon->keluhan }}</td>
+                                            <td>{{ $respon->status }}</td>
+                                            <td>{{ $respon->waktu_estimasi }}</td>
+                                            <td>
+                                                <a href="/daftar-wo/detail" class="btn btn-primary">Detail</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-footer text-right">
+                        <nav class="d-inline-block">
+                            {{ $data->links() }}
+                        </nav>
                     </div>
                 </div>
             </div>
-        </section>
+    </div>
+
+    </section>
     </div>
 @endsection
 
 @push('scripts')
     <!-- JS Libraies -->
-    <script src="{{ asset('library/jquery-ui-dist/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('library/cleave.js/dist/cleave.min.js') }}"></script>
+    <script src="{{ asset('library/cleave.js/dist/addons/cleave-phone.us.js') }}"></script>
+    <script src="{{ asset('library/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('library/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+    <script src="{{ asset('library/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+    <script src="{{ asset('library/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ asset('library/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/components-table.js') }}"></script>
+    <script src="{{ asset('js/page/forms-advanced-forms.js') }}"></script>
+    <script>
+        $(function() {
+            $('input[name="datetimes"]').daterangepicker({
+                timePicker: true,
+                startDate: moment().startOf('year'),
+                endDate: moment().startOf('hour').add(32, 'hour'),
+                locale: {
+                    format: 'M/DD hh:mm A'
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#bababoey').DataTable({
+                searching: false, // Disable searching
+                paging: false, // Hide pagination
+                info: false, // Hide information
+                lengthChange: false, // Hide entries per page
+                order: [
+                    [1, 'desc']
+                ]
+            });
+
+        });
+    </script>
 @endpush

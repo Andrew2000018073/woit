@@ -83,7 +83,7 @@
                                                 </label>
                                                 <label class="selectgroup-item">
                                                     <input type="radio" name="perangkat" value="LAINNYA"
-                                                        class="selectgroup-input">
+                                                        class="selectgroup-input" checked>
                                                     <span class="selectgroup-button selectgroup-button-icon"><i
                                                             class="fa-solid fa-otter mr-2"></i> LAINNYA</span>
                                                 </label>

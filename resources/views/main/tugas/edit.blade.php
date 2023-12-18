@@ -15,7 +15,7 @@
 @section('main')
     <div class="main-content">
         <section class="section">
-            <form action="{{ url('respond/' . $workorder->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('tugas/' . $workorder->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -32,27 +32,25 @@
                     <div class="row">
                         <div class="card col-12 gap-3">
                             <div class="section-title">
-                                Masalah oleh unit {{ $workorder->unit }}
+                                Detail Work Order
                             </div>
+                            <label>
+                                <h6>
+                                    Masalah oleh unit {{ $workorder->unit }}
+                                </h6>
+                            </label>
                             <p>
                                 {{ $workorder->keluhan }}
                             </p>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Analisa --}}
-                <div class="container">
-                    <div class="row">
-                        <div class="card col-12 gap-3 p-3">
-                            <div class="section-title">Detail Work Order</div>
-                            <div class="form-group mb-0">
-                                <label>Analisa</label>
-                                <textarea name="analisis" class="form-control" data-height="150" required=""></textarea>
-                                <div class="invalid-feedback">
-                                    Mohon di isi terlebih dahulu
-                                </div>
-                            </div>
+                            <br>
+                            <label>
+                                <h6>
+                                    Jenis Work Order & Prioritas
+                                </h6>
+                            </label>
+                            <p>
+                                {{ $workorder->jenis_servis }} & {{ $workorder->prioritas }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -120,7 +118,9 @@
                                 <select class="form-control select2" name="kategoriwo_id" required>
                                     <option value="">Pilih dulu</option>
                                     @foreach ($kategori as $category)
-                                        <option value="{{ $category->id }}"> {{ $category->nama_kategori }}
+                                        <option value="{{ $category->id }}"
+                                            @if ($category->id == $workorder->kategoriwo_id) selected @endif>
+                                            {{ $category->nama_kategori }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
 
-                {{-- Jenis Servis --}}
+                {{-- <div>
                 <div class="container">
                     <div class="row  ">
                         <div class="card col-12 gap-3">
@@ -139,115 +139,77 @@
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item col-5.5">
                                         <input type="radio" name="jenis_servis" value="internal" class="selectgroup-input"
+                                            @if ($workorder->jenis_servis == 'internal') @checked(true) @endif
                                             onclick="enablepriority()">
                                         <span class="selectgroup-button">Internal</span>
                                     </label>
                                     <div class="col-1"></div>
                                     <label class="selectgroup-item col-5.5">
                                         <input type="radio" name="jenis_servis" value="external" class="selectgroup-input"
+                                            @if ($workorder->jenis_servis == 'external') @checked(true) @endif
                                             onclick="disablepriority()">
                                         <span class="selectgroup-button">External</span>
                                     </label>
                                 </div>
                             </div>
-                            <div id="hilang">
-                                <div class="card-footer text-center">
-                                    <button class="btn btn-primary" id="btn-biasa">Submit</button>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                {{-- Prioritas --}}
-                <div class="collapse" id="mario">
-                    <div class="container">
-                        <div class="row  ">
-                            <div class="card col-12 gap-3">
-                                <div class="section-title2" id="titleprioritas">Prioritas</div>
-                                <div class="form-group">
-                                    <div class="selectgroup w-100">
-                                        <label class="selectgroup-item">
-                                            <input type="radio" name="prioritas" value="rendah"
-                                                class="selectgroup-input" id="rendah" required>
-                                            <span class="selectgroup-button selectgroup-button-icon" id="btnrendah">Rendah
-                                                (1 hingga 4 Minggu)</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="radio" name="prioritas" value="menengah"
-                                                class="selectgroup-input" id="sedang" required>
-                                            <span class="selectgroup-button selectgroup-button-icon" id="btnsedang">Sedang
-                                                (2 hingga 7 hari) </span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="radio" name="prioritas" value="tinggi"
-                                                class="selectgroup-input" id="tinggi" required>
-                                            <span class="selectgroup-button selectgroup-button-icon" id="btntinggi">Tinggi
-                                                (Kurang dari 24 jam) </span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-center">
-                                    <button class="btn btn-primary" id="btn-biasa" type="submit">Submit</button>
+                <div class="container">
+                    <div class="row  ">
+                        <div class="card col-12 gap-3">
+                            <div class="section-title2" id="titleprioritas">Prioritas</div>
+                            <div class="form-group">
+                                <div class="selectgroup w-100">
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="prioritas" value="rendah" class="selectgroup-input"
+                                            id="rendah" required>
+                                        <span class="selectgroup-button selectgroup-button-icon" id="btnrendah">Rendah
+                                            (1 hingga 4 Minggu)</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="prioritas" value="menengah"
+                                            class="selectgroup-input" id="sedang" required>
+                                        <span class="selectgroup-button selectgroup-button-icon" id="btnsedang">Sedang
+                                            (2 hingga 7 hari) </span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="prioritas" value="tinggi" class="selectgroup-input"
+                                            id="tinggi" required>
+                                        <span class="selectgroup-button selectgroup-button-icon" id="btntinggi">Tinggi
+                                            (Kurang dari 24 jam) </span>
+                                    </label>
                                 </div>
                             </div>
+
                         </div>
-
-
                     </div>
                 </div>
+            </div> --}}
 
-
-
-
-
+                {{-- Solusi --}}
+                <div class="container">
+                    <div class="row">
+                        <div class="card col-12 gap-3 p-3">
+                            <div class="section-title">Solusi</div>
+                            <div class="form-group mb-0">
+                                {{-- <label>Solusi</label> --}}
+                                <textarea name="solusi" class="form-control" data-height="150" required=""></textarea>
+                                <div class="invalid-feedback">
+                                    Mohon di isi terlebih dahulu
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn btn-primary" id="btn-biasa" type="submit">Selesai</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </section>
     </div>
-
-    <script>
-        function enable() {
-            document.getElementById("btn-biasa").setAttribute("class", "collapse");
-            document.getElementById("luigi").setAttribute("class", "collapse-show");
-            document.getElementById("titlewaktu").setAttribute("class", "section-title2");
-            document.getElementById("waktuambil").disabled = false;
-            document.getElementById("waktuselesai").disabled = false;
-            document.getElementById("solusi").disabled = false;
-        }
-
-        function disable() {
-            document.getElementById("luigi").setAttribute("class", "collapse");
-            document.getElementById("btn-biasa").setAttribute("class", "btn btn-primary");
-            document.getElementById("titlewaktu").setAttribute("class", "section-title1");
-            document.getElementById("waktuambil").disabled = true;
-            document.getElementById("waktuselesai").disabled = true;
-            document.getElementById("solusi").disabled = true;
-        }
-
-        function disablepriority() {
-            document.getElementById("mario").setAttribute("class", "collapse");
-            document.getElementById("hilang").setAttribute("class", "collapse-show");
-            //     document.getElementById("titleprioritas").setAttribute("class", "section-title1");
-            //     document.getElementById("btnrendah").setAttribute("class", "selectgroup-button-disabled");
-            //     document.getElementById("rendah").disabled = true;
-            //     document.getElementById("rendah").checked = false;
-            //     document.getElementById("sedang").disabled = true;
-            //     document.getElementById("sedang").checked = false;
-            //     document.getElementById("tinggi").disabled = true;
-            //     document.getElementById("tinggi").checked = false;
-        }
-
-        function enablepriority() {
-            document.getElementById("mario").setAttribute("class", "collapse-show");
-            document.getElementById("hilang").setAttribute("class", "collapse");
-
-            //     document.getElementById("titleprioritas").setAttribute("class", "section-title2");
-            //     document.getElementById("rendah").disabled = false;
-            //     document.getElementById("sedang").disabled = false;
-            //     document.getElementById("tinggi").disabled = false;
-        }
-    </script>
-
 @endsection
 
 @push('scripts')
@@ -262,4 +224,6 @@
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
+
+    <script></script>
 @endpush

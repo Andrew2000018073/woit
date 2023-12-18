@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('user');
             $table->string('unit');
             $table->string('slug')->nullable();
-            $table->string('nomor_komplain')->nullable();
-            $table->string('nomor_referensi');
+            $table->string('nomor_komplain')->nullable()->unique();
+            $table->string('nomor_referensi')->unique();
             $table->enum('prioritas', ['rendah', 'menengah', 'tinggi'])->nullable();
             $table->enum('jenis_servis', ['internal', 'external'])->nullable();
             $table->dateTime('waktu_pengajuan', $precision = 0)->nullable();
