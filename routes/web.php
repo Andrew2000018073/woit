@@ -106,8 +106,6 @@ Route::resource('/user/permintaan', UserRequestController::class)->middleware('g
 Route::get('/user/cek-proses', [UserRequestController::class,'index'])->middleware('guest');
 Route::get('/progress', [UserRequestController::class,'detail'])->middleware('guest');
 Route::get('/user/rate', [UserRequestController::class,'rating'])->middleware('guest');
-Route::get('/user/{id}/edit', [UserRequestController::class, 'edit'])->middleware('guest');
-Route::put('/user/{id}', [UserRequestController::class, 'update'])->middleware('guest');
 Route::get('/cekid', [UserRequestController::class, 'cekid'])->middleware('guest');
     // return view('user.progress', ['type_menu' => 'user']);
 

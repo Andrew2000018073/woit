@@ -9,6 +9,16 @@
 @section('main')<div class="main-content">
         <section class="section">
             <div class="section-body mt-5">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible show fade">
+                        <div class="alert-body">
+                            <button class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                            {{ session('success') }}
+                        </div>
+                    </div>
+                @endif
                 <div class="row ">
                     <div class="col-4"></div>
                     <div class="col-4">

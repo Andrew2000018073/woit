@@ -66,8 +66,21 @@ class UserRequestController extends Controller
         // dd('ter');
         // dd($request);
         $data  = workorder::where('nomor_komplain','like','%'. $request->nokomplain)->orwhere('nomor_referensi','like','%'. $request->nokomplain)->first();
-        dd($data);
-        return view('user.rating', ['slug'=>'rate']);
+        if($data->status == 'Selesai'){
+            return redirect('/user/permintaan/'.$request->nokomplain.'/edit');
+        }
+        elseif($data->status == 'Sedang dikerjakan'){
+            return view('user.dikerjakan',['data' => $data,
+            'slug'=>'rate']);
+        }
+        elseif($data->status == 'Belum dikerjakan'){
+            return view('user.menunggu', ['data'=>$data,
+            'slug'=>'rate']);
+        }
+            else{
+        return view('user.notfound', ['slug'=>'rate']);
+        }
+
     }
 
     /**
@@ -108,7 +121,7 @@ class UserRequestController extends Controller
         workorder::create($validatedData);
 
         // redirect to index
-        return redirect('/user/permintaan/create')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
+        return redirect('/user/cek-proses')->with('success', 'Permintaan anda berhasil diajukan. Berikut adalah nomor referensi anda '.$validatedData['nomor_referensi']);
     }
 
     /**
@@ -131,7 +144,13 @@ class UserRequestController extends Controller
     public function edit($id)
     {
         //
-        dd('Masuk');
+        $data=[
+            'slug'=>'rate',
+            'id'=> $id,
+            'admin'=>workorder::where('nomor_komplain','like','%'. $id)->first()
+        ];
+        // dd($id);
+        return view('user.nilai', $data);
     }
 
     /**
@@ -141,9 +160,21 @@ class UserRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($nomor_komplain, Request $request)
     {
         //
+        // dd($request);
+        $validatedData= $request->validate([
+            'rating'=>'required',
+        ]);
+
+        $data  = workorder::where('nomor_komplain','like','%'. $nomor_komplain)->first();
+        // dd($data['id']);
+
+        $resource = workorder::findOrFail($data['id']);
+        // dd($nomor_komplain);
+        $resource->update($validatedData);
+        return redirect('/user/rate');
     }
 
     /**

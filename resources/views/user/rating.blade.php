@@ -15,8 +15,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="/cekid" method="GET">
+
                                     <div class="col">
                                         <div class="mb-3">
+
                                             <input type="text" class="form-control mt-3" name="nokomplain"
                                                 placeholder="Nomor Komplain">
                                         </div>
