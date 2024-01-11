@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Tugas')
+@section('title', 'Respon permintaan')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -45,9 +45,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="card col-12 gap-3 p-3">
-                            <div class="section-title">Detail Work Order</div>
+                            <div class="section-title">Analisa</div>
                             <div class="form-group mb-0">
-                                <label>Analisa</label>
                                 <textarea name="analisis" class="form-control @error('analisis') is-invalid @enderror" data-height="150" required=""></textarea>
                                 @error('analisis')
                                     <div class="invalid-feedback">
@@ -195,15 +194,8 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
-
-
-
-
             </form>
         </section>
     </div>
@@ -229,6 +221,7 @@
 
         function disablepriority() {
             document.getElementById("mario").setAttribute("class", "collapse");
+            document.getElementById("mario").disabled = true;
             document.getElementById("hilang").setAttribute("class", "collapse-show");
             //     document.getElementById("titleprioritas").setAttribute("class", "section-title1");
             //     document.getElementById("btnrendah").setAttribute("class", "selectgroup-button-disabled");
@@ -242,6 +235,7 @@
 
         function enablepriority() {
             document.getElementById("mario").setAttribute("class", "collapse-show");
+            document.getElementById("mario").disabled = false;
             document.getElementById("hilang").setAttribute("class", "collapse");
 
             //     document.getElementById("titleprioritas").setAttribute("class", "section-title2");

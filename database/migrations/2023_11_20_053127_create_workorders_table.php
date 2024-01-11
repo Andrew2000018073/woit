@@ -40,6 +40,8 @@ return new class extends Migration
             $table->text('solusi')->nullable();
             $table->enum('status', ['Belum dikerjakan', 'Sedang dikerjakan', 'Selesai']);
             $table->enum('perangkat', ['CPU', 'MONITOR', 'MOUSE', 'KEYBOARD', 'JARINGAN', 'SPEAKER', 'PRINTER','LAINNYA']);
+            $table->integer('rating')->default(5);
+
         });
     }
 

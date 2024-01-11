@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class workorder extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'workorders';
-    protected $fillable = ['kategoriwo_id','admin_id','id_perangkat','user', 'unit','slug','nomor_komplain', 'nomor_referensi','prioritas','jenis_servis','waktu_pengajuan', 'waktu_ambil', 'waktu_selesai', 'keluhan','solusi', 'status', 'perangkat', 'analisis'];
+    protected $fillable = ['kategoriwo_id','admin_id','id_perangkat','user', 'unit','slug','nomor_komplain', 'nomor_referensi','prioritas','jenis_servis','waktu_pengajuan', 'waktu_ambil', 'waktu_selesai', 'keluhan','solusi', 'status', 'perangkat', 'analisis', 'rating'];
     public function admin():BelongsTo
     {
         return $this->belongsTo(Admin::class);
@@ -19,5 +20,9 @@ class workorder extends Model
     public function kategoriwo():BelongsTo
     {
         return $this->belongsTo(kategoriwo::class);
+    }
+    public function user(): HasOne
+    {
+        return $this->hasOne(user::class);
     }
 }

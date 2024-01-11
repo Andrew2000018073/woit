@@ -35,6 +35,7 @@ class WorkOrderFactory extends Factory
             'solusi' => fake()->paragraph(),
             'status' => fake()->randomElement(['Belum dikerjakan', 'Sedang dikerjakan', 'Selesai']),
             'perangkat' => fake()->randomElement(['CPU', 'MONITOR', 'MOUSE', 'KEYBOARD', 'JARINGAN', 'SPEAKER', 'PRINTER','LAINNYA']),
+            'rating'=>fake()->randomNumber()
         ];
     }
 }

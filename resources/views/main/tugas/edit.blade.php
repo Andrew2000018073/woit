@@ -63,7 +63,7 @@
 
                             <div class="form-group">
                                 <label>Jenis Perangkat</label>
-                                <select class="form-control select2" required name="perangkat">
+                                <select class="form-control select2" required name="perangkat" disabled>
                                     <option value="" @if ($workorder->perangkat == 'LAINNYA') selected @endif>Pilih terlebih
                                         dahulu</option>
                                     <option value="CPU" @if ($workorder->perangkat == 'CPU') selected @endif>CPU</option>
@@ -85,7 +85,7 @@
                             {{-- IDperangkat --}}
                             <div class="form-group">
                                 <label>ID Perangkat</label>
-                                <select class="form-control select2" name="id_perangkat">
+                                <select class="form-control select2" name="id_perangkat" disabled>
                                     <option value=""> Pilih dulu</option>
                                     <option value="1ac4e377-0722-4167-957b-aca8157326e0">
                                         1ac4e377-0722-4167-957b-aca8157326e0</option>
@@ -115,7 +115,7 @@
                             <div class="section-title">Kategori Wo</div>
                             <div class="form-group">
 
-                                <select class="form-control select2" name="kategoriwo_id" required>
+                                <select class="form-control select2" name="kategoriwo_id" required disabled>
                                     <option value="">Pilih dulu</option>
                                     @foreach ($kategori as $category)
                                         <option value="{{ $category->id }}"

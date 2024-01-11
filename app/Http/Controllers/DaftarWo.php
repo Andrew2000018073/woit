@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DateTime;
 use App\Models\Admin;
 use App\Models\workorder;
+use App\Models\kategoriwo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User;
@@ -13,13 +14,54 @@ use Illuminate\Foundation\Auth\User;
 class DaftarWo extends Controller
 {
     //
+    // public function admin($teng){
+    //     $models = Admin::all();
+    //     foreach ($models as $model) {
+    //         if($model->id == $teng){
+    //             return $model->nama;
+    //         }
+    //     }
+    // }
+
+public function kembali($nokomplain ,$admin, $tanggal, $prioritas, $jenisservis, $status, $kategori){
+    $key= '';
+    if($nokomplain != null){
+        $key = $key.' '.' Nomor komplain'.',';
+    }
+    if($admin != null){
+        $key = $key.' '.' Admin'.',';
+    }
+    if($tanggal != null){
+        $key = $key.' '.' Tanggal'.',';
+    }
+    if($prioritas != null){
+        $key = $key.' '. ' Prioritas'.',';
+    }
+    if($jenisservis != null){
+        $key = $key.' '.' Jenis Servis'.',';
+    }
+    if($status != null){
+        $key = $key.' '.' Status'.',';
+    }
+    if($kategori != null){
+        $key = $key.' '.' Kategori'.',';
+    }
+    $key = 'Filter by' . $key;
+    return $key;
+}
+
     public function index(request $request)
     {
-// dd($request->all());
+        $testo=$this->kembali($request->nokomplain , $request->admin, $request->datetimes, $request->prioritas, $request->jenisservis, $request->status, $request->kategori);
         $data = [
             'data' => workorder::paginate(5)->withQueryString(),
+            'kategori' => kategoriwo::get(),
+            'admin'=> admin::get(),
+            'slug'=> 'daftar',
+            'keterangan'=>$testo
         ];
         $tanggal = $request->datetimes;
+        // dd($tanggal);
 
 
 
@@ -27,22 +69,29 @@ class DaftarWo extends Controller
     $data['lastnumber']=$data['data']->perPage()*($data['data']->currentPage()-1);
 
     if($request->has('datetimes')){
-        list($startDateStr, $endDateStr) = explode(" - ", $tanggal);
-        $startDate = DateTime::createFromFormat('m/d h:i A', $startDateStr);
-        // dd($startDate);
-        $endDate = DateTime::createFromFormat('m/d h:i A', $endDateStr);
 
-        // dd($startDateStr, $endDateStr);
+        list($startDateStr, $endDateStr) = explode(" - ", $tanggal);
+        $startDate = DateTime::createFromFormat('Y-m-d H:i', $startDateStr);
+        $endDate = DateTime::createFromFormat('Y-m-d H:i', $endDateStr);
+
+
 
         $data =['data'=> workorder::whereDate('created_at','>=', $startDate)
         ->whereDate('created_at','<=',$endDate)
         ->where('nomor_komplain','like','%'. request('nokomplain'))
+        ->where('admin_id','like','%'. request('admin'))
+        ->where('kategoriwo_id','like','%'. request('kategoriwo_id'))
         ->where('status','like','%'. request('status'))
         ->where('jenis_servis','like','%'. request('jenis_servis'))
         ->where('prioritas','like','%'. request('prioritas'))
-        ->paginate(5)->withQueryString() ];
+        ->paginate(5)->withQueryString(),
+        'kategori' => kategoriwo::get(),
+        'admin'=> admin::get(),
+        'slug'=> 'daftar',
+        'keterangan'=>$testo ];
+        // dd('data')
+
         $data['lastnumber'] = $data['data']->perPage()*($data['data']->currentPage()-1);
-        // dd($data);
         return view('main.table.daftar', $data);
     }else{
 

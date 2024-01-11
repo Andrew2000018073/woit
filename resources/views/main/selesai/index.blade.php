@@ -18,7 +18,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Servis yang sedang dikerjakan</h1>
+                <h1>Servis yang telah dikerjakan</h1>
             </div>
 
             <div class="section-body">
@@ -30,7 +30,7 @@
                                 <h4>Filter</h4>
                             </div>
                             <div class="card-body">
-                                <form action="" method="get">
+                                <form action="/selesai" method="get">
                                     <div class="row">
                                         <div class="col">
 
@@ -127,20 +127,6 @@
                                         {{ $keterangan }}
                                     </h4>
                                 @endif
-                                <div class="card-header-form mr-5">
-
-                                    <form action="/selesai">
-                                        <div class="input-group">
-                                            <input id="myInput" type="text" class="form-control" placeholder="Cari"
-                                                name="status">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-primary"><i
-                                                        class="fas fa-magnifying-glass"></i></button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
                             </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
@@ -157,7 +143,6 @@
                                                 <th>prioritas</th>
                                                 <th>Tanggal Pengajuan</th>
                                                 <th>Tanggal Ambil</th>
-                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -173,8 +158,6 @@
                                                     <td>{{ $info->prioritas }}</td>
                                                     <td>{{ $info->waktu_pengajuan }}</td>
                                                     <td>{{ $info->waktu_ambil }}</td>
-                                                    <td><a href="/tugas/{{ $info->id }}/edit"
-                                                            class="btn btn-primary">Detail</a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

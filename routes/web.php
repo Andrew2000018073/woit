@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminnambahtugasController;
 use App\Http\Controllers\DaftarWo;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\UserRequestController;
 use App\Http\Controllers\UserWoController;
 use App\Http\Controllers\WorkorderController;
 use App\Models\userwo;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,9 +37,11 @@ Route::middleware(['auth.data'])->group(function () {
     // Your routes go here
     Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
 
-    Route::get('/admintambahtugas', function () {
-        return view('main.form.adminnambah', ['type_menu' => 'components']);
-    })->middleware('auth');
+    // Route::get('/admintambahtugas', function () {
+    //     return view('main.form.adminnambah', ['type_menu' => 'components']);
+    // })->middleware('auth');
+
+    Route::resource('/admintambahtugas', AdminnambahtugasController::class);
 
     Route::get('/tugas', [TugasController::class,'index'])->middleware('auth');
     Route::get('/tugas/{id}/edit', [TugasController::class,'edit'])->middleware('auth');
@@ -77,6 +81,9 @@ Route::middleware(['auth.data'])->group(function () {
 
 // Route::resource('/respond/{id_workorder}/update', RespondController::class);
 
+Route::get('/testing',  function () {
+        return view('welcome', ['type_menu' => 'bootstrap']);
+    });
 
     Route::get('/daftar-wo', [DaftarWo::class, 'index']);
 // Route::get('/respond-permintaan', function () {
@@ -96,11 +103,14 @@ Route::middleware(['auth.data'])->group(function () {
 
 Route::resource('/user/permintaan', UserRequestController::class)->middleware('guest');
 
+Route::get('/user/cek-proses', [UserRequestController::class,'index'])->middleware('guest');
+Route::get('/progress', [UserRequestController::class,'detail'])->middleware('guest');
+Route::get('/user/rate', [UserRequestController::class,'rating'])->middleware('guest');
+Route::get('/user/{id}/edit', [UserRequestController::class, 'edit'])->middleware('guest');
+Route::put('/user/{id}', [UserRequestController::class, 'update'])->middleware('guest');
+Route::get('/cekid', [UserRequestController::class, 'cekid'])->middleware('guest');
+    // return view('user.progress', ['type_menu' => 'user']);
 
-
-Route::get('/user/cek-proses', function () {
-    return view('user.progress', ['type_menu' => 'user']);
-})->middleware('guest');
 Route::get('/user/rating', function () {
     return view('user.rating');
 })->middleware('guest');

@@ -21,9 +21,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     workorder::factory(20)->create();
-    Admin::factory(10)->create();
+    // Admin::factory(10)->create();
 
     $this->call(AdminSeeder::class);
+    $this->call(UserSeeder::class);
 
 
         $this->call(KategoriwoSeeder::class);

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\workorder;
 use App\Models\kategoriwo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+
 use Illuminate\Support\BigInteger;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Validation\Rules\RequiredIf;
@@ -20,14 +22,68 @@ class RespondController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function kembali($nomor, $pic, $unit, $tanggal){
+        $key= '';
+        if($nomor != null){
+            $key = 'Nomor referensi'.',';
+        }
+        if($pic != null){
+            $key = $key.'Nama pic'.',';
+        }
+        if($unit != null){
+            $key = $key. 'unit'.',';
+        }
+        if($tanggal != null){
+            $key = $key.'tanggal'.',';
+        }
+        // dd($key);
+        return $key;
+    }
+
+    public function index(request $request)
     {
         //
+        $testo=$this->kembali($request->nomor_referensi , $request->pic, $request->unit, $request->datetimes);
 
-        $info = ['info' => DB::table('workorders')->where('status', 'Belum dikerjakan')->get()];
+
+        $data = ['data' => workorder::where('status', 'Belum dikerjakan')
+        ->paginate(10),
+        'keterangan'=> 'Filter by',
+        'slug'=> 'respon',
+        ];
+        $data['lastnumber']=$data['data']->perPage()*($data['data']->currentPage()-1);
+        $tanggal = $request->datetimes;
+        // dd($tanggal);
+
+        if($request->has('datetimes')){
+            list($startDateStr, $endDateStr) = explode(" - ", $tanggal);
+            // dd($startDateStr);
+
+            $startDate = DateTime::createFromFormat('Y-m-d H:i', $startDateStr);
+            $endDate = DateTime::createFromFormat('Y-m-d H:i', $endDateStr);
+            // dd($startDate);
 
 
-        return view('main.respon.index', $info);
+            $data =['data'=>workorder::whereDate('created_at','>=', $startDate)
+            ->whereDate('created_at','<=',$endDate)
+            ->where('nomor_komplain','like','%'. request('nomor_referensi'))
+            ->where('nomor_referensi','like','%'. request('nomor_referensi'))
+            ->where('user','like','%'. request('pic'))
+            ->where('unit','like','%'. request('unit'))
+            ->paginate(5)->withQueryString(),
+            'kategori' => kategoriwo::get(),
+            'slug'=> 'respon',
+            'keterangan'=>$testo ];
+            $data['lastnumber'] = $data['data']->perPage()*($data['data']->currentPage()-1);
+            // dd($data);
+            return view('main.respon.index', $data);
+        }else{
+            return view('main.respon.index', $data);
+        }
+
+
+
 
     }
 
@@ -73,6 +129,7 @@ class RespondController extends Controller
     {
         $data = [
             'workorder'=>workorder::where('id', $id)->first(),
+            'slug'=> 'respon',
             'kategori' => kategoriwo::get(),
 
         ];
@@ -109,6 +166,7 @@ class RespondController extends Controller
      }
     public function update(Request $request, $id)
     {
+        // dd($request);
         // buat nomor belakang
         $count = $id;
         if ($count > 0 && $count < 10) {
@@ -134,17 +192,15 @@ class RespondController extends Controller
         $validatedData['waktu_ambil'] = now()->format('Y-m-d H:i:s');
         $validatedData['admin_id'] = Auth::id();
         $validatedData['nomor_komplain'] = $testo;
-        if ($request->has('prioritas')){
+        if ($request->jenis_servis == 'internal'){
             $validatedData['prioritas'] = $request->input('prioritas');
-            $resource = workorder::findOrFail($id);
-            $resource->update($validatedData);
         }
         else {
             # code...
             $validatedData['prioritas'] = 'rendah';
-            $resource = workorder::findOrFail($id);
-            $resource->update($validatedData);
         }
+        $resource = workorder::findOrFail($id);
+        $resource->update($validatedData);
 
         // dd($validatedData);
 

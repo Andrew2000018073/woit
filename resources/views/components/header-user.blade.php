@@ -1,17 +1,34 @@
-<div class="navbar-bg"></div>
+<style>
+    .navbar-gg {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: #6777ef;
+        z-index: -1;
+    }
+</style>
+
+<div class="navbar-gg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">MAK Servis</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link active" href="/user/permintaan/create">Ajukan request</a>
-                <a class="nav-link" href="/user/cek-proses">Cek Pengerjaan</a>
-                <a class="nav-link" href="/user/rating">Rate Servis</a>
-            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item {{ $slug == 'minta' ? 'active' : '' }}">
+                    <a href="/user/permintaan/create" class="nav-link">Ajukan
+                        request</a>
+                </li>
+                <li class="nav-item {{ $slug == 'cek' ? 'active' : '' }}">
+
+                    <a class="nav-link" href="/user/cek-proses">Cek Pengerjaan</a>
+                </li>
+                <li class="nav-item {{ $slug == 'rate' ? 'active' : '' }}">
+                    <a class="nav-link" href="/user/rate">Rate Servis</a>
+                </li>
         </div>
+    </div>
     </div>
 </nav>

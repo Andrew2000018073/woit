@@ -27,6 +27,7 @@ class DashboardController extends Controller
             'belum'=> DB::table('workorders')->where('status', 'Belum dikerjakan')->get()->count(),
             'sedang'=> DB::table('workorders')->where('status', 'Sedang dikerjakan')->get()->count(),
             'sudah'=> DB::table('workorders')->where('status', 'Selesai')->get()->count(),
+            'slug'=> 'dashboard',
         ];
 
         return view('main.dashboard', $data);

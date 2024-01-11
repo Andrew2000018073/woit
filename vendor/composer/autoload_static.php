@@ -39,6 +39,10 @@ class ComposerStaticInit6a3409634095df318381118ad437f463
     );
 
     public static $prefixLengthsPsr4 = array (
+        'w' => 
+        array (
+            'willvincent\\Rateable\\' => 21,
+        ),
         'v' => 
         array (
             'voku\\' => 5,
@@ -188,6 +192,10 @@ class ComposerStaticInit6a3409634095df318381118ad437f463
     );
 
     public static $prefixDirsPsr4 = array (
+        'willvincent\\Rateable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/willvincent/laravel-rateable/src',
+        ),
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
@@ -553,15 +561,19 @@ class ComposerStaticInit6a3409634095df318381118ad437f463
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
+        'App\\Http\\Controllers\\AdminnambahtugasController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminnambahtugasController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DaftarWo' => __DIR__ . '/../..' . '/app/Http/Controllers/DaftarWo.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\KategoriwoController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriwoController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
-        'App\\Http\\Controllers\\Respond' => __DIR__ . '/../..' . '/app/Http/Controllers/Respond.php',
+        'App\\Http\\Controllers\\RespondController' => __DIR__ . '/../..' . '/app/Http/Controllers/RespondController.php',
+        'App\\Http\\Controllers\\SelesaiController' => __DIR__ . '/../..' . '/app/Http/Controllers/SelesaiController.php',
+        'App\\Http\\Controllers\\TugasController' => __DIR__ . '/../..' . '/app/Http/Controllers/TugasController.php',
         'App\\Http\\Controllers\\UserRequestController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserRequestController.php',
         'App\\Http\\Controllers\\WorkorderController' => __DIR__ . '/../..' . '/app/Http/Controllers/WorkorderController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\AuthDataMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthDataMiddleware.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -578,6 +590,7 @@ class ComposerStaticInit6a3409634095df318381118ad437f463
         'App\\Http\\Requests\\UpdateworkorderRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateworkorderRequest.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\kategoriwo' => __DIR__ . '/../..' . '/app/Models/kategoriwo.php',
+        'App\\Models\\user' => __DIR__ . '/../..' . '/app/Models/user.php',
         'App\\Models\\workorder' => __DIR__ . '/../..' . '/app/Models/workorder.php',
         'App\\Policies\\AdminPolicy' => __DIR__ . '/../..' . '/app/Policies/AdminPolicy.php',
         'App\\Policies\\KategoriwoPolicy' => __DIR__ . '/../..' . '/app/Policies/KategoriwoPolicy.php',
@@ -5842,6 +5855,9 @@ class ComposerStaticInit6a3409634095df318381118ad437f463
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
+        'willvincent\\Rateable\\Rateable' => __DIR__ . '/..' . '/willvincent/laravel-rateable/src/Rateable.php',
+        'willvincent\\Rateable\\RateableServiceProvider' => __DIR__ . '/..' . '/willvincent/laravel-rateable/src/RateableServiceProvider.php',
+        'willvincent\\Rateable\\Rating' => __DIR__ . '/..' . '/willvincent/laravel-rateable/src/Rating.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

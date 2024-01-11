@@ -26,7 +26,7 @@
                         <h4>Filter</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/daftar-wo" method="get">
+                        <form action="" method="get">
                             <div class="row">
                                 <div class="col">
 
@@ -37,6 +37,19 @@
 
                                     </div>
 
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <select class="form-control select2" name="admin">
+                                            <option value="">Admin</option>
+                                            @foreach ($admin as $admin)
+                                                <option value="{{ $admin->id }}">
+                                                    {{ $admin->nama }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <div class="input-group">
@@ -50,13 +63,14 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="row mt-3">
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <select class="form-control select2" name="prioritas">
+                                        <select class="form-control select2" name="prioritas" id="js-example-tags">
                                             <option value=" ">Prioritas</option>
                                             <option value="rendah">Rendah</option>
                                             <option value="menengah">Menengah</option>
@@ -75,7 +89,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <select class="form-control select2" name="status" required>
+                                        <select class="form-control select2" name="status">
                                             <option value=" ">Status</option>
                                             <option value="Belum dikerjakan">Belum dikerjakan</option>
                                             <option value="Sedang dikerjakan">Sedang dikerjakan</option>
@@ -83,12 +97,27 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col">
+                                    <div class="form-group">
+
+                                        <select class="form-control select2" name="kategoriwo_id">
+                                            <option value="">Kategori</option>
+                                            @foreach ($kategori as $category)
+                                                <option value="{{ $category->id }}">
+                                                    {{ $category->nama_kategori }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="d-flex justify-content-center">
                                 <div class="form-group row mb-4">
                                     <div class="col-sm-12 col-md-7">
                                         <button class="btn btn-primary" type="submit" name="submit"
-                                            id="submit">SUBMIT</button>
+                                            id="Filter">Filter</button>
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +129,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Data Servis</h4>
+                        @if ($keterangan != 'Filter by')
+                            <h4>
+                                {{ $keterangan }}
+                            </h4>
+                        @endif
                         <div class="card-header-form mr-5">
 
 
@@ -175,41 +209,19 @@
     <!-- JS Libraies -->
     <script src="{{ asset('library/cleave.js/dist/cleave.min.js') }}"></script>
     <script src="{{ asset('library/cleave.js/dist/addons/cleave-phone.us.js') }}"></script>
-    <script src="{{ asset('library/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ asset('library/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
     <script src="{{ asset('library/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
     <script src="{{ asset('library/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('library/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('library/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/forms-advanced-forms.js') }}"></script>
-    <script>
-        $(function() {
-            $('input[name="datetimes"]').daterangepicker({
-                timePicker: true,
-                startDate: moment().startOf('year'),
-                endDate: moment().startOf('hour').add(32, 'hour'),
-                locale: {
-                    format: 'M/DD hh:mm A'
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $('#bababoey').DataTable({
-                searching: false, // Disable searching
-                paging: false, // Hide pagination
-                info: false, // Hide information
-                lengthChange: false, // Hide entries per page
-                order: [
-                    [1, 'desc']
-                ]
-            });
-
-        });
-    </script>
+    <script src="{{ asset('js/custom/daterange.js') }}"></script>
+    <script src="{{ asset('js/custom/aturantabel.js') }}"></script>
+    <script src="{{ asset('js/custom/daterangep.js') }}"></script>
+    <script src="{{ asset('js/custom/select2withnewtags.js') }}"></script>
 @endpush

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\workorder;
 use App\Models\kategoriwo;
 use Illuminate\Http\Request;
@@ -13,24 +14,67 @@ class TugasController extends Controller
 {
     //
 
-    public function index(){
+    public function kembali($nokomplain , $tanggal, $prioritas, $kategori){
+        $key= '';
+        if($nokomplain != null){
+            $key = $key.' '.' Nomor komplain'.',';
+        }
+        if($tanggal != null){
+            $key = $key.' '.' Tanggal'.',';
+        }
+        if($prioritas != null){
+            $key = $key.' '. ' Prioritas'.',';
+        }
+        if($kategori != null){
+            $key = $key.' '.' Kategori'.',';
+        }
+        $key = 'Filter by' . $key;
+        return $key;
+    }
+
+    public function index(request $request){
+
+        $testo=$this->kembali($request->nokomplain , $request->datetimes, $request->prioritas, $request->kategori);
+
         $data = [
             'data' => workorder::where('admin_id', Auth::id())->where('status', 'Sedang Dikerjakan')->paginate(5),
+            'keterangan'=> 'Filter by',
+            'slug'=> 'tugas',
+            'kategori' => kategoriwo::get()
         ];
 
-        if (request('status')) {
-            $data = [
-                'data' =>  workorder::where('status','like','%'. request('status') .'%')
-                ->orwhere('nomor_komplain','like','%'. request('status'))
-                ->orwhere('durasi','like','%'. request('status'))
-                ->paginate(5)->withQueryString()
-            ];
-        }
-
         $data['lastnumber']=$data['data']->perPage()*($data['data']->currentPage()-1);
+        $tanggal = $request->datetimes;
 
-        // $data = ['data' => DB::table('workorders')->where('admin_id', Auth::id())->get()];
-        return view("main.tugas.index", $data);
+    if($request->has('datetimes')){
+
+        list($startDateStr, $endDateStr) = explode(" - ", $tanggal);
+        $startDate = DateTime::createFromFormat('Y-m-d H:i', $startDateStr);
+        $endDate = DateTime::createFromFormat('Y-m-d H:i', $endDateStr);
+
+
+
+        $data =['data'=> workorder::whereDate('created_at','>=', $startDate)
+        ->whereDate('created_at','<=',$endDate)
+        ->where('nomor_komplain','like','%'. request('nokomplain'))
+        ->where('admin_id','like','%'. request('admin'))
+        ->where('kategoriwo_id','like','%'. request('kategoriwo_id'))
+        ->where('status','like','%'. request('status'))
+        ->where('jenis_servis','like','%'. request('jenis_servis'))
+        ->where('prioritas','like','%'. request('prioritas'))
+        ->where('admin_id', Auth::id())
+        ->where('status', 'Sedang Dikerjakan')
+        ->paginate(5)->withQueryString(),
+        'kategori' => kategoriwo::get(),
+        'slug'=> 'tugas',
+        'keterangan'=>$testo ];
+        $data['lastnumber'] = $data['data']->perPage()*($data['data']->currentPage()-1);
+        return view('main.tugas.index', $data);
+    }else{
+
+        return view('main.tugas.index', $data);
+    }
+
     }
 
      /**
@@ -43,6 +87,7 @@ class TugasController extends Controller
     {
         $data = [
             'workorder'=>workorder::where('id', $id)->first(),
+            'slug'=> 'tugas',
             'kategori' => kategoriwo::get(),
         ];
         //
@@ -88,7 +133,7 @@ class TugasController extends Controller
         // ]);
 
         Alert::success('Selamat!', 'Anda telah menyelesaikan permintaan');
-        return redirect('/selesai')->with('success', 'Resource updated successfully');
+        return redirect('/selesai');
 
     }
 

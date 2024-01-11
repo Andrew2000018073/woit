@@ -19,13 +19,15 @@ class AdminSeeder extends Seeder
 
 
     $data = [[
-        'nama' => "Andrew",
-        'username' => 'andrew',
-        'password' => bcrypt('password'),
+        'nama' => "Abiema Febrian    Nugraha",
     ],[
-        'nama' => "Alfi",
-        'username' => 'alfi',
-        'password' => bcrypt('password'),
+        'nama' => "Dimas Hendrick Gerarldi",
+    ],[
+        'nama' => "Adi Nugroho",
+    ],[
+        'nama' => "Mas Arif",
+    ],[
+        'nama' => "Nur Haryanto",
     ]];
 
     DB::table('admin')->insert($data);
